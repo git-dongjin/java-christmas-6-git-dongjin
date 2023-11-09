@@ -3,7 +3,7 @@ package christmas.view;
 import java.io.Closeable;
 
 public interface Reader extends Closeable {
-    String read();
+    String readLine();
 
     @Override
     void close();
