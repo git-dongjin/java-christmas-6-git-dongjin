@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import christmas.enums.DecemberDays;
+import christmas.enums.DecemberCalendar;
 
 import java.time.DayOfWeek;
 
@@ -13,11 +13,11 @@ public class Day {
     }
 
     public DayOfWeek getWeekOfDay() {
-        return DecemberDays.getDayOfWeek(day);
+        return DecemberCalendar.getDayOfWeek(day);
     }
 
     private void validate(int day) {
-        if (!DecemberDays.contains(day)) {
+        if (!DecemberCalendar.contains(day)) {
             throw new IllegalArgumentException();
         }
     }
