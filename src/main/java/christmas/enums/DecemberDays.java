@@ -1,5 +1,7 @@
 package christmas.enums;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,6 +11,7 @@ public enum DecemberDays {
     TWENTY_FIRST(21), TWENTY_SECOND(22), TWENTY_THIRD(23), TWENTY_FORTH(24), TWENTY_FIFTH(25), TWENTY_SIXTH(26), TWENTY_SEVENTH(27), TWENTY_EIGHTH(28), TWENTY_NINTH(29), THIRTIETH(30),
     THIRTY_FIRST(31);
 
+    private static final int YEAR = 2023, MONTH = 12;
     private static final List<Integer> DECEMBER_DAYS = Arrays.stream(DecemberDays.values())
             .map(DecemberDays::getDay)
             .toList();
@@ -24,5 +27,10 @@ public enum DecemberDays {
 
     public boolean contains(int day) {
         return DECEMBER_DAYS.contains(day);
+    }
+
+    public DayOfWeek getDayOfWeek() {
+        LocalDate date = LocalDate.of(YEAR, MONTH, day);
+        return date.getDayOfWeek();
     }
 }
