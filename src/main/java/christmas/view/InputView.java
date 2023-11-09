@@ -29,7 +29,7 @@ public class InputView {
         }
     }
 
-    public Map<String, Integer> readMenuEa() {
+    public Map<String, Integer> readOrders() {
         while (true) {
             try {
                 outputView.printReadMenuEa();
