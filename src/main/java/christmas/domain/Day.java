@@ -1,24 +1,28 @@
 package christmas.domain;
 
-import christmas.enums.DecemberCalendar;
+import christmas.enums.DecemberDay;
 
 import java.time.DayOfWeek;
 
 public class Day {
-    private final int day;
+    private final DecemberDay day;
 
     public Day(int day) {
         validate(day);
-        this.day = day;
+        this.day = intToDecemberDay(day);
     }
 
     public DayOfWeek getWeekOfDay() {
-        return DecemberCalendar.getDayOfWeek(day);
+        return day.getDayOfWeek();
     }
 
     private void validate(int day) {
-        if (!DecemberCalendar.contains(day)) {
+        if (!DecemberDay.contains(day)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private DecemberDay intToDecemberDay(int day) {
+        return DecemberDay.integerToDecemberDay(day);
     }
 }
