@@ -1,5 +1,9 @@
 package christmas.enums;
 
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import static christmas.enums.MenuCategory.*;
 
 public enum Menu {
@@ -8,13 +12,29 @@ public enum Menu {
     CHOCOLATE_CAKE(DESSERT, "초코케이크", 15_000), ICE_CREAM(DESSERT, "아이스크림", 5_000),
     ZERO_COKE(DRINK, "제로콜라", 3_000), RED_WINE(DRINK, "레드와인", 60_000), CHAMPAGNE(DRINK, "샴페인", 25_000);
 
+    private static final Map<String, Menu> NAME_TO_MENU = Arrays.stream(values()).collect(Collectors.toMap(Menu::getName, value -> value));
     private final MenuCategory category;
     private final String name;
     private final int price;
+
+    public static Menu getMenu(String name) {
+        validateName(name);
+        return NAME_TO_MENU.get(name);
+    }
+
+    private static void validateName(String name) {
+        if (!NAME_TO_MENU.containsKey(name)) {
+            throw new IllegalArgumentException();
+        }
+    }
 
     Menu(MenuCategory category, String name, int price) {
         this.category = category;
         this.name = name;
         this.price = price;
+    }
+
+    public String getName() {
+        return name;
     }
 }
