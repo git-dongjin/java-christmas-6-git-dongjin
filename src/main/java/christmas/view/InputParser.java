@@ -1,7 +1,5 @@
 package christmas.view;
 
-import christmas.enums.Menu;
-
 import java.util.AbstractMap;
 import java.util.Map;
 
