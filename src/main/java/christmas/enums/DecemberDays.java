@@ -12,10 +12,17 @@ public enum DecemberDays {
     THIRTY_FIRST(31);
 
     private static final int YEAR = 2023, MONTH = 12;
-    private static final List<Integer> DECEMBER_DAYS = Arrays.stream(DecemberDays.values())
-            .map(DecemberDays::getDay)
-            .toList();
+    private static final List<Integer> DAYS = Arrays.stream(values()).map(DecemberDays::getDay).toList();
     private final int day;
+
+    public static boolean contains(int day) {
+        return DAYS.contains(day);
+    }
+
+    public static DayOfWeek getDayOfWeek(int day) {
+        LocalDate date = LocalDate.of(YEAR, MONTH, day);
+        return date.getDayOfWeek();
+    }
 
     DecemberDays(int day) {
         this.day = day;
@@ -23,14 +30,5 @@ public enum DecemberDays {
 
     public int getDay() {
         return day;
-    }
-
-    public boolean contains(int day) {
-        return DECEMBER_DAYS.contains(day);
-    }
-
-    public DayOfWeek getDayOfWeek() {
-        LocalDate date = LocalDate.of(YEAR, MONTH, day);
-        return date.getDayOfWeek();
     }
 }
