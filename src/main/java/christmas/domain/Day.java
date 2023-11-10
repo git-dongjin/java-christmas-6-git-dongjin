@@ -9,7 +9,7 @@ public class Day {
 
     public Day(int day) {
         validate(day);
-        this.day = intToDecemberDay(day);
+        this.day = convertIntegerToDecemberDay(day);
     }
 
     public DayOfWeek getWeekOfDay() {
@@ -22,7 +22,7 @@ public class Day {
         }
     }
 
-    private DecemberDay intToDecemberDay(int day) {
-        return DecemberDay.integerToDecemberDay(day);
+    private DecemberDay convertIntegerToDecemberDay(int day) {
+        return DecemberDay.convertIntegerToDecemberDay(day);
     }
 }

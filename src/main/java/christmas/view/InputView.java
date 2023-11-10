@@ -1,10 +1,9 @@
 package christmas.view;
 
 import christmas.domain.Day;
+import christmas.domain.Orders;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.List;
 
 public class InputView {
     private final Reader reader;
@@ -21,7 +20,7 @@ public class InputView {
         while (true) {
             try {
                 outputView.printReadDate();
-                String input = reader.readLine();
+                String input = reader.readLine().strip();
                 return new Day(inputParser.parseInt(input));
             } catch (IllegalArgumentException e) {
                 outputView.printReadDateError();
@@ -29,14 +28,13 @@ public class InputView {
         }
     }
 
-    public Map<String, Integer> readOrders() {
+    public Orders readOrders() {
         while (true) {
             try {
                 outputView.printReadMenuEa();
-                String input = reader.readLine();
-                String[] outerSplit = inputParser.outerSplit(input);
-                return Arrays.stream(outerSplit).map(inputParser::innerSplit)
-                        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+                String outer = reader.readLine();
+                List<String> inners = inputParser.outerSplit(outer);
+                return new Orders(inputParser.innersSplit(inners));
             } catch (IllegalArgumentException e) {
                 outputView.printReadMenuEaError();
             }

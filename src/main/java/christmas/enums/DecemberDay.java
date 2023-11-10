@@ -17,7 +17,7 @@ public enum DecemberDay {
             .collect(Collectors.toMap(DecemberDay::getDay, value -> value));
     private final int day;
 
-    public static DecemberDay integerToDecemberDay(int day) {
+    public static DecemberDay convertIntegerToDecemberDay(int day) {
         validateDay(day);
         return INTEGER_TO_DECEMBER_DAY.get(day);
     }

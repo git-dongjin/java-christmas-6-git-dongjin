@@ -12,18 +12,27 @@ public enum Menu {
     CHOCOLATE_CAKE(DESSERT, "초코케이크", 15_000), ICE_CREAM(DESSERT, "아이스크림", 5_000),
     ZERO_COKE(DRINK, "제로콜라", 3_000), RED_WINE(DRINK, "레드와인", 60_000), CHAMPAGNE(DRINK, "샴페인", 25_000);
 
-    private static final Map<String, Menu> NAME_TO_MENU = Arrays.stream(values()).collect(Collectors.toMap(Menu::getName, value -> value));
+    private static final Map<String, Menu> STRING_TO_MENU = Arrays.stream(values()).collect(Collectors.toMap(Menu::getName, value -> value));
     private final MenuCategory category;
     private final String name;
     private final int price;
 
-    public static Menu getMenu(String name) {
+    public static Menu convertStringToMenu(String name) {
         validateName(name);
-        return NAME_TO_MENU.get(name);
+        return STRING_TO_MENU.get(name);
+    }
+
+    public static boolean contains(String name) {
+        return STRING_TO_MENU.containsKey(name);
+    }
+
+    public static MenuCategory convertStringToCategory(String name) {
+        validateName(name);
+        return convertStringToMenu(name).getCategory();
     }
 
     private static void validateName(String name) {
-        if (!NAME_TO_MENU.containsKey(name)) {
+        if (!contains(name)) {
             throw new IllegalArgumentException();
         }
     }
@@ -36,5 +45,9 @@ public enum Menu {
 
     public String getName() {
         return name;
+    }
+
+    public MenuCategory getCategory() {
+        return category;
     }
 }
