@@ -19,7 +19,7 @@ public class OrdersMenuCount {
     public Money calculateOrderTotal() {
         Money orderTotal = Money.ZERO;
 
-        for(Map.Entry<Menu, Integer> order : ordersMenuCount.entrySet()) {
+        for (Map.Entry<Menu, Integer> order : ordersMenuCount.entrySet()) {
             Money price = order.getKey().getPrice();
             int count = order.getValue();
 
@@ -29,11 +29,25 @@ public class OrdersMenuCount {
         return orderTotal;
     }
 
+    public int getDesertCount() {
+        return ordersMenuCount.keySet().stream()
+                .filter(key -> key.getCategory().equals(MenuCategory.DESSERT))
+                .mapToInt(ordersMenuCount::get)
+                .sum();
+    }
+
+    public int getMainCount() {
+        return ordersMenuCount.keySet().stream()
+                .filter(key -> key.getCategory().equals(MenuCategory.MAIN))
+                .mapToInt(ordersMenuCount::get)
+                .sum();
+    }
+
     @Override
     public String toString() {
         StringBuilder ordersBuilder = new StringBuilder("<주문 메뉴>").append(System.lineSeparator());
 
-        for(Map.Entry<Menu, Integer> order : ordersMenuCount.entrySet()) {
+        for (Map.Entry<Menu, Integer> order : ordersMenuCount.entrySet()) {
             ordersBuilder.append(order.getKey().getName())
                     .append(order.getValue())
                     .append("개")
