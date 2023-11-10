@@ -17,14 +17,7 @@ public class InputParser {
     }
 
     public List<Order> innersSplit(List<String> inners) {
-        List<Order> orders = new ArrayList<>();
-
-        for (String inner : inners) {
-            Order order = innerSplit(inner);
-            orders.add(order);
-        }
-
-        return orders;
+        return inners.stream().map(this::innerSplit).toList();
     }
 
     private Order innerSplit(String inner) {
