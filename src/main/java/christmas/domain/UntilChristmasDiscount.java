@@ -12,7 +12,7 @@ public class UntilChristmasDiscount {
             return Money.ZERO;
         }
         Money profit = Money.THOUSAND;
-        return profit.add(Money.THOUSAND.multiply(day.calculateDaysFromFirstDay())).negative();
+        return profit.add(Money.HUNDRED.multiply(day.calculateDaysFromFirstDay())).negative();
     }
 
     @Override
