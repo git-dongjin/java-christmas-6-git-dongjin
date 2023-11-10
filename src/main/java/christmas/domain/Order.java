@@ -13,6 +13,14 @@ public class Order {
         this.count = count;
     }
 
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
     private void validateExistMenu(String menu) {
         if (!Menu.contains(menu)) {
             throw new IllegalArgumentException();

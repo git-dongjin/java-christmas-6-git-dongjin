@@ -26,11 +26,6 @@ public enum Menu {
         return STRING_TO_MENU.containsKey(name);
     }
 
-    public static MenuCategory convertStringToCategory(String name) {
-        validateName(name);
-        return convertStringToMenu(name).getCategory();
-    }
-
     private static void validateName(String name) {
         if (!contains(name)) {
             throw new IllegalArgumentException();
