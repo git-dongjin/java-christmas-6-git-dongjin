@@ -1,7 +1,7 @@
 package christmas.view;
 
 import christmas.domain.Day;
-import christmas.domain.Orders;
+import christmas.domain.OrdersMenuCount;
 
 import java.util.List;
 
@@ -28,13 +28,13 @@ public class InputView {
         }
     }
 
-    public Orders readOrders() {
+    public OrdersMenuCount readOrders() {
         while (true) {
             try {
                 outputView.printReadOrders();
                 String outer = reader.readLine();
                 List<String> inners = inputParser.outerSplit(outer);
-                return new Orders(inputParser.innersSplit(inners));
+                return new OrdersMenuCount(inputParser.innersSplit(inners));
             } catch (IllegalArgumentException e) {
                 outputView.printReadOrdersError();
             }

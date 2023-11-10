@@ -1,6 +1,7 @@
 package christmas.view;
 
 import christmas.domain.Order;
+import christmas.domain.Orders;
 
 import java.util.*;
 
@@ -16,8 +17,8 @@ public class InputParser {
         return Arrays.stream(outer.split(OUTER_DELIMITER, NO_LIMIT)).map(String::strip).toList();
     }
 
-    public List<Order> innersSplit(List<String> inners) {
-        return inners.stream().map(this::innerSplit).toList();
+    public Orders innersSplit(List<String> inners) {
+        return new Orders(inners.stream().map(this::innerSplit).toList());
     }
 
     private Order innerSplit(String inner) {

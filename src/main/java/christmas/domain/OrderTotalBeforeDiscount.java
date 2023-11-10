@@ -3,7 +3,7 @@ package christmas.domain;
 public class OrderTotalBeforeDiscount {
     private final Money orderTotal;
 
-    public OrderTotalBeforeDiscount(Orders orders) {
+    public OrderTotalBeforeDiscount(OrdersMenuCount orders) {
         this.orderTotal = orders.calculateOrderTotal();
     }
 
