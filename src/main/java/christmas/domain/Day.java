@@ -26,6 +26,10 @@ public class Day {
         return day.calculateDaysFromFirstDay();
     }
 
+    public boolean isStar() {
+        return day.isStar();
+    }
+
     private void validate(int day) {
         if (!DecemberDay.contains(day)) {
             throw new IllegalArgumentException();
