@@ -23,6 +23,10 @@ public enum Gift {
         this.count = count;
     }
 
+    public Money getProfit() {
+        return Menu.convertStringToMenu(name).getPrice().multiply(count).negative();
+    }
+
     @Override
     public String toString() {
         return name + " " + String.valueOf(count) + "개" + System.lineSeparator();

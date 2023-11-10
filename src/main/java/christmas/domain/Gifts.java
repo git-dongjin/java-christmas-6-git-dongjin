@@ -12,6 +12,14 @@ public class Gifts {
         this.gifts = gifts;
     }
 
+    public Money getProfit() {
+        Money profit = Money.ZERO;
+        for(Gift gift : gifts) {
+            profit = profit.add(gift.getProfit());
+        }
+        return profit;
+    }
+
     private void validateNotDuplicate(List<Gift> gifts) {
         if (gifts.size() != gifts.stream().distinct().count()) {
             throw new IllegalStateException();
