@@ -3,7 +3,7 @@ package christmas.domain;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
-public class Money {
+public class Money implements Comparable<Money> {
     public static final Money ZERO = new Money(BigDecimal.valueOf(0L)),
             TEN_THOUSAND = new Money(BigDecimal.valueOf(10_000L)),
             HUNDRED_TWENTY_THOUSAND = new Money(BigDecimal.valueOf(120_000L));
@@ -25,6 +25,11 @@ public class Money {
     public Money multiply(int scalar) {
         BigDecimal result = amount.multiply(BigDecimal.valueOf(scalar));
         return new Money(result);
+    }
+
+    @Override
+    public int compareTo(Money other) {
+        return this.amount.compareTo(other.amount);
     }
 
     @Override
