@@ -3,6 +3,7 @@ package christmas.domain;
 import christmas.enums.Menu;
 import christmas.enums.MenuCategory;
 
+import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,19 @@ public class Orders {
         validateTotalCountNotOverTwenty(orders);
 
         this.orders = convertListToMap(orders);
+    }
+
+    public BigDecimal calculateOrderTotal() {
+        BigDecimal orderTotal = BigDecimal.ZERO;
+
+        for(Map.Entry<Menu, Integer> order : orders.entrySet()) {
+            BigDecimal price = order.getKey().getPrice();
+            BigDecimal count = BigDecimal.valueOf(order.getValue());
+
+            orderTotal = orderTotal.add(price.multiply(count));
+        }
+
+        return orderTotal;
     }
 
     private void validateMenuNotDuplicate(List<Order> orders) {

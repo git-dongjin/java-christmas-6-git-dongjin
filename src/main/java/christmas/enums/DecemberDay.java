@@ -2,6 +2,7 @@ package christmas.enums;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -45,7 +46,6 @@ public enum DecemberDay {
     public boolean isStar() {
         return star;
     }
-
     public DayType getDayType() {
         return DayType.getDayType(getDayOfWeek());
     }
