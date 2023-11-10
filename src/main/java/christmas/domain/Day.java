@@ -15,6 +15,17 @@ public class Day {
         return day.getDayType();
     }
 
+    public boolean isNotChristmasDiscountPeriod() {
+        return day.isNotChristmasDiscountPeriod();
+    }
+
+    public long calculateDaysFromFirstDay() {
+        if (isNotChristmasDiscountPeriod()) {
+            throw new IllegalStateException();
+        }
+        return day.calculateDaysFromFirstDay();
+    }
+
     private void validate(int day) {
         if (!DecemberDay.contains(day)) {
             throw new IllegalArgumentException();
