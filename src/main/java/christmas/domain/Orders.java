@@ -3,7 +3,6 @@ package christmas.domain;
 import christmas.enums.Menu;
 import christmas.enums.MenuCategory;
 
-import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,12 +18,12 @@ public class Orders {
         this.orders = convertListToMap(orders);
     }
 
-    public BigDecimal calculateOrderTotal() {
-        BigDecimal orderTotal = BigDecimal.ZERO;
+    public Money calculateOrderTotal() {
+        Money orderTotal = Money.ZERO;
 
         for(Map.Entry<Menu, Integer> order : orders.entrySet()) {
-            BigDecimal price = order.getKey().getPrice();
-            BigDecimal count = BigDecimal.valueOf(order.getValue());
+            Money price = order.getKey().getPrice();
+            int count = order.getValue();
 
             orderTotal = orderTotal.add(price.multiply(count));
         }
