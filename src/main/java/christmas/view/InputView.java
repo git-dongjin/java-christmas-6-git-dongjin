@@ -31,12 +31,12 @@ public class InputView {
     public Orders readOrders() {
         while (true) {
             try {
-                outputView.printReadMenuEa();
+                outputView.printReadOrders();
                 String outer = reader.readLine();
                 List<String> inners = inputParser.outerSplit(outer);
                 return new Orders(inputParser.innersSplit(inners));
             } catch (IllegalArgumentException e) {
-                outputView.printReadMenuEaError();
+                outputView.printReadOrdersError();
             }
         }
     }

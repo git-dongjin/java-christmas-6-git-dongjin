@@ -1,8 +1,7 @@
 package christmas.domain;
 
+import christmas.enums.DayType;
 import christmas.enums.DecemberDay;
-
-import java.time.DayOfWeek;
 
 public class Day {
     private final DecemberDay day;
@@ -12,8 +11,8 @@ public class Day {
         this.day = convertIntegerToDecemberDay(day);
     }
 
-    public DayOfWeek getWeekOfDay() {
-        return day.getDayOfWeek();
+    public DayType getDayType() {
+        return day.getDayType();
     }
 
     private void validate(int day) {

@@ -26,7 +26,7 @@ public class OutputView {
         print(READ_DATE);
     }
 
-    public void printReadMenuEa() {
+    public void printReadOrders() {
         print(READ_ORDERS);
     }
 
@@ -34,7 +34,7 @@ public class OutputView {
         print(READ_DATE_ERROR);
     }
 
-    public void printReadMenuEaError() {
+    public void printReadOrdersError() {
         print(READ_ORDERS_ERROR);
     }
 
