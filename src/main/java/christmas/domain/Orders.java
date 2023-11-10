@@ -32,6 +32,20 @@ public class Orders {
         return orderTotal;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder ordersBuilder = new StringBuilder("<주문 메뉴>").append(System.lineSeparator());
+
+        for(Map.Entry<Menu, Integer> order : orders.entrySet()) {
+            ordersBuilder.append(order.getKey().getName())
+                    .append(order.getValue())
+                    .append("개")
+                    .append(System.lineSeparator());
+        }
+
+        return ordersBuilder.toString();
+    }
+
     private void validateMenuNotDuplicate(List<Order> orders) {
         if (orders.size() != orders.stream().map(Order::getMenu).distinct().count()) {
             throw new IllegalArgumentException();
