@@ -28,15 +28,15 @@ public class InputView {
         }
     }
 
-    public OrdersMenuCount readOrders() {
+    public OrdersMenuCount readOrdersMenuCount() {
         while (true) {
             try {
-                outputView.printReadOrders();
+                outputView.printReadOrdersMenuCount();
                 String outer = reader.readLine();
                 List<String> inners = inputParser.outerSplit(outer);
                 return new OrdersMenuCount(inputParser.innersSplit(inners));
             } catch (IllegalArgumentException e) {
-                outputView.printReadOrdersError();
+                outputView.printReadOrdersMenuCountError();
             }
         }
     }

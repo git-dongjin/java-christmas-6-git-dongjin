@@ -1,25 +1,25 @@
 package christmas.domain;
 
 import christmas.enums.Menu;
+import christmas.enums.MenuCategory;
 
 import java.util.Map;
 
 public class OrdersMenuCount {
-    private static final int MAX_TOTAL = 20;
-    private final Map<Menu, Integer> orders;
+    private static final int MAX_TOTAL_COUNT = 20;
+    private final Map<Menu, Integer> ordersMenuCount;
 
-    public OrdersMenuCount(Orders orders) {
-        validateMenuNotDuplicate(orders);
-        validateMenuContainsNotDrink(orders);
-        validateTotalCountNotOverMaxTotal(orders);
+    public OrdersMenuCount(Map<Menu, Integer> ordersMenuCount) {
+        validateKeysContainsNotDrink(ordersMenuCount);
+        validateTotalValuesNotOverMaxTotalCount(ordersMenuCount);
 
-        this.orders = convertListToMap(orders);
+        this.ordersMenuCount = ordersMenuCount;
     }
 
     public Money calculateOrderTotal() {
         Money orderTotal = Money.ZERO;
 
-        for(Map.Entry<Menu, Integer> order : orders.entrySet()) {
+        for(Map.Entry<Menu, Integer> order : ordersMenuCount.entrySet()) {
             Money price = order.getKey().getPrice();
             int count = order.getValue();
 
@@ -33,7 +33,7 @@ public class OrdersMenuCount {
     public String toString() {
         StringBuilder ordersBuilder = new StringBuilder("<주문 메뉴>").append(System.lineSeparator());
 
-        for(Map.Entry<Menu, Integer> order : orders.entrySet()) {
+        for(Map.Entry<Menu, Integer> order : ordersMenuCount.entrySet()) {
             ordersBuilder.append(order.getKey().getName())
                     .append(order.getValue())
                     .append("개")
@@ -43,25 +43,15 @@ public class OrdersMenuCount {
         return ordersBuilder.toString();
     }
 
-    private void validateMenuNotDuplicate(Orders orders) {
-        if (orders.isMenuDuplicate()) {
+    private void validateKeysContainsNotDrink(Map<Menu, Integer> ordersMenuCount) {
+        if (ordersMenuCount.keySet().stream().allMatch(key -> key.getCategory().equals(MenuCategory.DRINK))) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateMenuContainsNotDrink(Orders orders) {
-        if (orders.isMenuAllDrink()) {
+    private void validateTotalValuesNotOverMaxTotalCount(Map<Menu, Integer> ordersMenuCount) {
+        if (ordersMenuCount.values().stream().mapToInt(Integer::intValue).sum() > MAX_TOTAL_COUNT) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private void validateTotalCountNotOverMaxTotal(Orders orders) {
-        if (orders.isTotalCountOver(MAX_TOTAL)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private Map<Menu, Integer> convertListToMap(Orders orders) {
-        return orders.convertListToMap();
     }
 }

@@ -2,6 +2,7 @@ package christmas.view;
 
 import christmas.domain.Order;
 import christmas.domain.Orders;
+import christmas.enums.Menu;
 
 import java.util.*;
 
@@ -17,8 +18,9 @@ public class InputParser {
         return Arrays.stream(outer.split(OUTER_DELIMITER, NO_LIMIT)).map(String::strip).toList();
     }
 
-    public Orders innersSplit(List<String> inners) {
-        return new Orders(inners.stream().map(this::innerSplit).toList());
+    public Map<Menu, Integer> innersSplit(List<String> inners) {
+        Orders orders = new Orders(inners.stream().map(this::innerSplit).toList());
+        return orders.convertListToMap();
     }
 
     private Order innerSplit(String inner) {

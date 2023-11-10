@@ -22,8 +22,8 @@ public class Money {
         return new Money(result);
     }
 
-    public Money multiply(int count) {
-        BigDecimal result = amount.multiply(BigDecimal.valueOf(count));
+    public Money multiply(int scalar) {
+        BigDecimal result = amount.multiply(BigDecimal.valueOf(scalar));
         return new Money(result);
     }
 
