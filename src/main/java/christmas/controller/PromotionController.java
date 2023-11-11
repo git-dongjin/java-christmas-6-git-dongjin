@@ -2,11 +2,6 @@ package christmas.controller;
 
 import christmas.controller.domain.DomainController;
 import christmas.controller.view.ViewController;
-import christmas.domain.Day;
-import christmas.domain.policy.PresentGivePolicy;
-import christmas.domain.money.OrderTotalBeforeDiscount;
-import christmas.domain.order.OrdersMenuCount;
-import christmas.enums.Gift;
 import christmas.view.input.Reader;
 import christmas.view.output.Writer;
 

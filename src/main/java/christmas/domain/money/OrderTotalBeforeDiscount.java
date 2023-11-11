@@ -1,18 +1,20 @@
 package christmas.domain.money;
 
 import christmas.domain.order.OrdersMenuCount;
-import christmas.domain.policy.PresentGivePolicy;
-import christmas.enums.Gift;
+import christmas.domain.policy.PresentListPolicy;
+import christmas.enums.Present;
+
+import java.util.List;
 
 public class OrderTotalBeforeDiscount {
     private final Money orderTotal;
 
-    public OrderTotalBeforeDiscount(OrdersMenuCount orders) {
-        this.orderTotal = orders.calculateOrderTotal();
+    public OrderTotalBeforeDiscount(OrdersMenuCount menuCount) {
+        this.orderTotal = menuCount.calculateOrderTotal();
     }
 
-    public PresentGivePolicy calculateGift() {
-        return new PresentGivePolicy(Gift.getPresents(orderTotal));
+    public List<Present> calculatePresents() {
+        return Present.getPresents(orderTotal);
     }
 
     @Override

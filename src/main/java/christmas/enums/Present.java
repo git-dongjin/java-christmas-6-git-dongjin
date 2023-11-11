@@ -5,7 +5,7 @@ import christmas.domain.money.Money;
 import java.util.Arrays;
 import java.util.List;
 
-public enum Gift {
+public enum Present {
     CHAMPAGNE(new Money(120_000L), "샴페인", 1);
 
     private static final int SAME = 0;
@@ -13,11 +13,11 @@ public enum Gift {
     private final String name;
     private final int count;
 
-    public static List<Gift> getPresents(Money money) {
+    public static List<Present> getPresents(Money money) {
         return Arrays.stream(values()).filter(value -> value.min.compareTo(money) <= SAME).toList();
     }
 
-    Gift(Money min, String name, int count) {
+    Present(Money min, String name, int count) {
         this.min = min;
         this.name = name;
         this.count = count;
