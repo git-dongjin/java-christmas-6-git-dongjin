@@ -1,4 +1,4 @@
-package christmas.controller;
+package christmas.controller.view;
 
 import christmas.domain.Day;
 import christmas.domain.order.OrdersMenuCount;
