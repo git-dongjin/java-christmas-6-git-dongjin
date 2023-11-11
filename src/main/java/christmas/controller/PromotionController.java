@@ -8,11 +8,11 @@ import christmas.enums.Gift;
 import christmas.view.input.InputView;
 import christmas.view.output.OutputView;
 
-public class PromotionHandler {
+public class PromotionController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public PromotionHandler(InputView inputView, OutputView outputView) {
+    public PromotionController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
