@@ -14,26 +14,22 @@ public enum Calendar {
     THIRTY_FIRST(31, true);
 
     private static final int YEAR = 2023, MONTH = 12;
-    private static final Map<Integer, Calendar> INTEGER_TO_DECEMBER_DAY = Arrays.stream(values())
+    private static final Map<Integer, Calendar> INTEGER_TO_CALENDAR = Arrays.stream(values())
             .collect(Collectors.toMap(Calendar::getDay, value -> value));
     private final int day;
     private final boolean star;
 
-    public static int getYear() {
-        return YEAR;
-    }
-
-    public static int getMonth() {
-        return MONTH;
-    }
-
-    public static LocalDate convertIntegerToDecemberDay(int day) {
+    public static LocalDate convertIntegerToLocalDate(int day) {
         validateDay(day);
-        return LocalDate.of(YEAR, MONTH, INTEGER_TO_DECEMBER_DAY.get(day).getDay());
+        return LocalDate.of(YEAR, MONTH, INTEGER_TO_CALENDAR.get(day).getDay());
+    }
+
+    public static boolean isStar(int day) {
+        return INTEGER_TO_CALENDAR.get(day).star;
     }
 
     public static boolean contains(int day) {
-        return INTEGER_TO_DECEMBER_DAY.containsKey(day);
+        return INTEGER_TO_CALENDAR.containsKey(day);
     }
 
     private static void validateDay(int day) {
@@ -49,10 +45,6 @@ public enum Calendar {
 
     public int getDay() {
         return day;
-    }
-
-    public boolean isStar() {
-        return star;
     }
     public DayType getDayType() {
         return DayType.getDayType(getDayOfWeek());

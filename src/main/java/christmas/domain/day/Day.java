@@ -8,12 +8,13 @@ import java.time.temporal.ChronoUnit;
 
 public class Day {
     public static final Day FIRST_DAY = new Day(Calendar.FIRST.getDay()),
-            CHRISTMAS = new Day(Calendar.TWENTY_FIFTH.getDay());
+            CHRISTMAS = new Day(Calendar.TWENTY_FIFTH.getDay()),
+            LAST_DAY = new Day(Calendar.THIRTY_FIRST.getDay());
     private final LocalDate day;
 
     public Day(int day) {
         validate(day);
-        this.day = Calendar.convertIntegerToDecemberDay(day);
+        this.day = Calendar.convertIntegerToLocalDate(day);
     }
 
     public boolean isBefore(Day other) {
@@ -28,12 +29,12 @@ public class Day {
         return ChronoUnit.DAYS.between(other.day, day);
     }
 
-    public DayType getDayType() {
-        return day.getDayType();
+    public boolean isStar() {
+        return Calendar.isStar(day.getDayOfMonth());
     }
 
-    public boolean isStar() {
-        return day.isStar();
+    public DayType getDayType() {
+        return day.getDayType();
     }
 
     @Override

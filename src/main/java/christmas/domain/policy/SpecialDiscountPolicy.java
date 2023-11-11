@@ -1,35 +1,30 @@
 package christmas.domain.policy;
 
 import christmas.domain.day.Day;
+import christmas.domain.day.SpecialDiscountDay;
 import christmas.domain.money.Money;
+import christmas.domain.money.SpecialDiscountProfit;
 
 public class SpecialDiscountPolicy {
-    private final Money profit;
+    private final SpecialDiscountProfit specialDiscountProfit;
 
     public SpecialDiscountPolicy(Day day) {
-        Money profit = calculateProfit(day);
-        validateProfit(profit);
-        this.profit = calculateProfit(day);
+        SpecialDiscountDay specialDiscountDay = new SpecialDiscountDay(day);
+        this.specialDiscountProfit = new SpecialDiscountProfit(specialDiscountDay);
+    }
+
+    private Money getProfit() {
+        return specialDiscountProfit.getProfit();
     }
 
     @Override
     public String toString() {
+        Money profit = getProfit();
+
         if (profit.isZero()) {
             return "";
         }
+
         return "특별 할인: " + profit + "원";
-    }
-
-    private Money calculateProfit(Day day) {
-        if (day.isStar()) {
-            return Money.THOUSAND.negative();
-        }
-        return Money.ZERO;
-    }
-
-    private void validateProfit(Money profit) {
-        if (profit.isPositive()) {
-            throw new IllegalStateException();
-        }
     }
 }

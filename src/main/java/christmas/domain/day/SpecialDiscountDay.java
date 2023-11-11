@@ -1,11 +1,11 @@
 package christmas.domain.day;
 
-public class ChristmasDiscountDay {
+public class SpecialDiscountDay {
     private static final Day START_DAY = Day.FIRST_DAY,
-            END_DAY = Day.CHRISTMAS;
+            END_DAY = Day.LAST_DAY;
     private final Day day;
 
-    public ChristmasDiscountDay(Day day) {
+    public SpecialDiscountDay(Day day) {
         this.day = day;
     }
 
@@ -13,7 +13,7 @@ public class ChristmasDiscountDay {
         return !(day.isBefore(START_DAY) || day.isAfter(END_DAY));
     }
 
-    public long calculateDaysFromStart() {
-        return day.betweenFrom(START_DAY);
+    public boolean isStar() {
+        return day.isStar();
     }
 }

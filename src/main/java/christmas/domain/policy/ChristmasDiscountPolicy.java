@@ -13,13 +13,13 @@ public class ChristmasDiscountPolicy {
         this.christmasProfit = new ChristmasDiscountProfit(christmasDiscountDay);
     }
 
-    public Money getChristmasProfit() {
+    public Money getProfit() {
         return christmasProfit.getProfit();
     }
 
     @Override
     public String toString() {
-        Money profit = getChristmasProfit();
+        Money profit = getProfit();
 
         if (profit.isZero()) {
             return "";
