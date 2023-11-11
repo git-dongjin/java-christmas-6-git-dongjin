@@ -1,6 +1,6 @@
 package christmas.view.input;
 
-import christmas.domain.Day;
+import christmas.domain.day.Day;
 import christmas.domain.order.OrdersMenuCount;
 import christmas.view.output.OutputView;
 

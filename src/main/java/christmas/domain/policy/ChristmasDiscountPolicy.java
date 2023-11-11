@@ -1,14 +1,14 @@
 package christmas.domain.policy;
 
-import christmas.domain.Day;
+import christmas.domain.day.Day;
+import christmas.domain.money.ChristmasDiscountProfit;
 import christmas.domain.money.Money;
 
 public class ChristmasDiscountPolicy {
-    private final Money profit;
+    private final Day day;
 
     public ChristmasDiscountPolicy(Day day) {
-        Money profit = calculateProfit(day);
-        validateProfit(profit);
+        Money profit = new ChristmasDiscountProfit(day);
         this.profit = profit;
     }
 

@@ -1,6 +1,6 @@
 package christmas.controller.view;
 
-import christmas.domain.Day;
+import christmas.domain.day.Day;
 import christmas.domain.order.OrdersMenuCount;
 import christmas.view.input.InputView;
 import christmas.view.input.Reader;

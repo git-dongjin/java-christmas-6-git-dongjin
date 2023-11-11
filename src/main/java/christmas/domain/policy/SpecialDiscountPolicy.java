@@ -1,6 +1,6 @@
 package christmas.domain.policy;
 
-import christmas.domain.Day;
+import christmas.domain.day.Day;
 import christmas.domain.money.Money;
 
 public class SpecialDiscountPolicy {
