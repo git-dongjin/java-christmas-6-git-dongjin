@@ -13,15 +13,23 @@ public enum Calendar {
     TWENTY_FIRST(21, false), TWENTY_SECOND(22, false), TWENTY_THIRD(23, false), TWENTY_FOURTH(24, true), TWENTY_FIFTH(25, true), TWENTY_SIXTH(26, false), TWENTY_SEVENTH(27, false), TWENTY_EIGHTH(28, false), TWENTY_NINTH(29, false), THIRTIETH(30, false),
     THIRTY_FIRST(31, true);
 
-    private static final int YEAR = 2023, MONTH = 12, FIRST_DAY = 1, CHRISTMAS_DAY = 25;
+    private static final int YEAR = 2023, MONTH = 12;
     private static final Map<Integer, Calendar> INTEGER_TO_DECEMBER_DAY = Arrays.stream(values())
             .collect(Collectors.toMap(Calendar::getDay, value -> value));
     private final int day;
     private final boolean star;
 
-    public static Calendar convertIntegerToDecemberDay(int day) {
+    public static int getYear() {
+        return YEAR;
+    }
+
+    public static int getMonth() {
+        return MONTH;
+    }
+
+    public static LocalDate convertIntegerToDecemberDay(int day) {
         validateDay(day);
-        return INTEGER_TO_DECEMBER_DAY.get(day);
+        return LocalDate.of(YEAR, MONTH, INTEGER_TO_DECEMBER_DAY.get(day).getDay());
     }
 
     public static boolean contains(int day) {
@@ -48,13 +56,6 @@ public enum Calendar {
     }
     public DayType getDayType() {
         return DayType.getDayType(getDayOfWeek());
-    }
-
-    public boolean isNotChristmasDiscountPeriod() {
-        LocalDate firstDay = LocalDate.of(YEAR, MONTH, FIRST_DAY);
-        LocalDate lastDay = LocalDate.of(YEAR, MONTH, CHRISTMAS_DAY);
-        LocalDate today = LocalDate.of(YEAR, MONTH, day);
-        return today.isBefore(firstDay) || today.isAfter(lastDay);
     }
 
     public long calculateDaysFromFirstDay() {

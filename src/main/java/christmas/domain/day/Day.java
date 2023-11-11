@@ -3,27 +3,33 @@ package christmas.domain.day;
 import christmas.enums.DayType;
 import christmas.enums.Calendar;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
 public class Day {
-    private final Calendar day;
+    public static final Day FIRST_DAY = new Day(Calendar.FIRST.getDay()),
+            CHRISTMAS = new Day(Calendar.TWENTY_FIFTH.getDay());
+    private final LocalDate day;
 
     public Day(int day) {
         validate(day);
-        this.day = convertIntegerToDecemberDay(day);
+        this.day = Calendar.convertIntegerToDecemberDay(day);
+    }
+
+    public boolean isBefore(Day other) {
+        return day.isBefore(other.day);
+    }
+
+    public boolean isAfter(Day other) {
+        return day.isAfter(other.day);
+    }
+
+    public long betweenFrom(Day other) {
+        return ChronoUnit.DAYS.between(other.day, day);
     }
 
     public DayType getDayType() {
         return day.getDayType();
-    }
-
-    public boolean isNotChristmasDiscountPeriod() {
-        return day.isNotChristmasDiscountPeriod();
-    }
-
-    public long calculateDaysFromFirstDay() {
-        if (isNotChristmasDiscountPeriod()) {
-            throw new IllegalStateException();
-        }
-        return day.calculateDaysFromFirstDay();
     }
 
     public boolean isStar() {
@@ -39,9 +45,5 @@ public class Day {
         if (!Calendar.contains(day)) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private Calendar convertIntegerToDecemberDay(int day) {
-        return Calendar.convertIntegerToDecemberDay(day);
     }
 }

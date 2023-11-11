@@ -1,9 +1,23 @@
 package christmas.domain.money;
 
-public class ChristmasDiscountProfit {
-    private final Money profit;
+import christmas.domain.day.ChristmasDiscountDay;
 
-    public ChristmasDiscountProfit(Money profit) {
-        this.profit = profit;
+public class ChristmasDiscountProfit {
+    private final ChristmasDiscountDay christmasDiscountDay;
+
+    public ChristmasDiscountProfit(ChristmasDiscountDay christmasDiscountDay) {
+        this.christmasDiscountDay = christmasDiscountDay;
+    }
+
+    public Money getProfit() {
+        if (!christmasDiscountDay.isEventPeriod()) {
+            return Money.ZERO;
+        }
+        return calculateProfit();
+    }
+
+    private Money calculateProfit() {
+        Money profit = Money.THOUSAND;
+        return profit.add(Money.HUNDRED.multiply(christmasDiscountDay.calculateDaysFromStart())).negative();
     }
 }

@@ -1,8 +1,8 @@
 package christmas.domain.day;
 
-import java.time.LocalDate;
-
 public class ChristmasDiscountDay {
+    private static final Day START_DAY = Day.FIRST_DAY,
+            LAST_DAY = Day.CHRISTMAS;
     private final Day day;
 
     public ChristmasDiscountDay(Day day) {
@@ -10,6 +10,10 @@ public class ChristmasDiscountDay {
     }
 
     public boolean isEventPeriod() {
-        return false; -
+        return !(day.isBefore(START_DAY) || day.isAfter(LAST_DAY));
+    }
+
+    public long calculateDaysFromStart() {
+        return day.betweenFrom(START_DAY);
     }
 }
