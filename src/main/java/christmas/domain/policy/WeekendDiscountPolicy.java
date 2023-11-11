@@ -7,7 +7,9 @@ public class WeekendDiscountPolicy implements WeekDiscountPolicy {
     private final Money profit;
 
     public WeekendDiscountPolicy(OrdersMenuCount menuCount) {
-        this.profit = calculateProfit(menuCount);
+        Money profit = calculateProfit(menuCount);
+        validateProfit(profit);
+        this.profit = profit;
     }
 
     @Override
@@ -18,5 +20,11 @@ public class WeekendDiscountPolicy implements WeekDiscountPolicy {
     private Money calculateProfit(OrdersMenuCount menuCount) {
         int mainCount = menuCount.getMainCount();
         return Money.YEAR_AMOUNT.multiply(mainCount).negative();
+    }
+
+    private void validateProfit(Money profit) {
+        if (profit.isPositive()) {
+            throw new IllegalStateException();
+        }
     }
 }

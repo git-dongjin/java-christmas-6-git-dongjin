@@ -7,12 +7,13 @@ public class SpecialDiscountPolicy {
     private final Money profit;
 
     public SpecialDiscountPolicy(Day day) {
+        Money profit = calculateProfit(day);
+        validateProfit(profit);
         this.profit = calculateProfit(day);
     }
 
     @Override
     public String toString() {
-        validatePolicy();
         if (profit.isZero()) {
             return "";
         }
@@ -26,7 +27,7 @@ public class SpecialDiscountPolicy {
         return Money.ZERO;
     }
 
-    private void validatePolicy() {
+    private void validateProfit(Money profit) {
         if (profit.isPositive()) {
             throw new IllegalStateException();
         }
