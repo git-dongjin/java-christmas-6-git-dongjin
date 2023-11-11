@@ -2,8 +2,8 @@ package christmas.enums;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -13,19 +13,27 @@ public enum Calendar {
     TWENTY_FIRST(21, false), TWENTY_SECOND(22, false), TWENTY_THIRD(23, false), TWENTY_FOURTH(24, true), TWENTY_FIFTH(25, true), TWENTY_SIXTH(26, false), TWENTY_SEVENTH(27, false), TWENTY_EIGHTH(28, false), TWENTY_NINTH(29, false), THIRTIETH(30, false),
     THIRTY_FIRST(31, true);
 
+    public static final int FIRST_DAY = 1, CHRISTMAS_DAY = 25, LAST_DAY = 31;
     private static final int YEAR = 2023, MONTH = 12;
+    private static List<DayOfWeek> WEEKDAY = List.of(DayOfWeek.SUNDAY, DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY),
+            WEEKEND = List.of(DayOfWeek.FRIDAY, DayOfWeek.SATURDAY);
     private static final Map<Integer, Calendar> INTEGER_TO_CALENDAR = Arrays.stream(values())
-            .collect(Collectors.toMap(Calendar::getDay, value -> value));
+            .collect(Collectors.toMap(value -> value.day, value -> value));
     private final int day;
     private final boolean star;
 
     public static LocalDate convertIntegerToLocalDate(int day) {
         validateDay(day);
-        return LocalDate.of(YEAR, MONTH, INTEGER_TO_CALENDAR.get(day).getDay());
+        return LocalDate.of(YEAR, MONTH, INTEGER_TO_CALENDAR.get(day).day);
     }
 
     public static boolean isStar(int day) {
+        validateDay(day);
         return INTEGER_TO_CALENDAR.get(day).star;
+    }
+
+    public static boolean isWeekday(DayOfWeek dayOfWeek) {
+        return WEEKDAY.contains(dayOfWeek);
     }
 
     public static boolean contains(int day) {
@@ -41,24 +49,6 @@ public enum Calendar {
     Calendar(int day, boolean star) {
         this.day = day;
         this.star = star;
-    }
-
-    public int getDay() {
-        return day;
-    }
-    public DayType getDayType() {
-        return DayType.getDayType(getDayOfWeek());
-    }
-
-    public long calculateDaysFromFirstDay() {
-        LocalDate firstDay = LocalDate.of(YEAR, MONTH, FIRST_DAY);
-        LocalDate today = LocalDate.of(YEAR, MONTH, day);
-        return ChronoUnit.DAYS.between(firstDay, today);
-    }
-
-    private DayOfWeek getDayOfWeek() {
-        LocalDate date = LocalDate.of(YEAR, MONTH, day);
-        return date.getDayOfWeek();
     }
 
     @Override

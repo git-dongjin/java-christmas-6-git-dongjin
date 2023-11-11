@@ -1,15 +1,14 @@
 package christmas.domain.day;
 
-import christmas.enums.DayType;
 import christmas.enums.Calendar;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class Day {
-    public static final Day FIRST_DAY = new Day(Calendar.FIRST.getDay()),
-            CHRISTMAS = new Day(Calendar.TWENTY_FIFTH.getDay()),
-            LAST_DAY = new Day(Calendar.THIRTY_FIRST.getDay());
+    public static final Day FIRST_DAY = new Day(Calendar.FIRST_DAY),
+            CHRISTMAS = new Day(Calendar.CHRISTMAS_DAY),
+            LAST_DAY = new Day(Calendar.LAST_DAY);
     private final LocalDate day;
 
     public Day(int day) {
@@ -33,8 +32,8 @@ public class Day {
         return Calendar.isStar(day.getDayOfMonth());
     }
 
-    public DayType getDayType() {
-        return day.getDayType();
+    public boolean isWeekday() {
+        return Calendar.isWeekday(day.getDayOfWeek());
     }
 
     @Override
