@@ -10,6 +10,6 @@ public class ChristmasDiscountDay {
     }
 
     public boolean isEventPeriod() {
-        return false;
+        return false; -
     }
 }

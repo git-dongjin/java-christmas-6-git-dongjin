@@ -1,10 +1,10 @@
 package christmas.domain.day;
 
 import christmas.enums.DayType;
-import christmas.enums.DecemberDay;
+import christmas.enums.Calendar;
 
 public class Day {
-    private final DecemberDay day;
+    private final Calendar day;
 
     public Day(int day) {
         validate(day);
@@ -36,12 +36,12 @@ public class Day {
     }
 
     private void validate(int day) {
-        if (!DecemberDay.contains(day)) {
+        if (!Calendar.contains(day)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private DecemberDay convertIntegerToDecemberDay(int day) {
-        return DecemberDay.convertIntegerToDecemberDay(day);
+    private Calendar convertIntegerToDecemberDay(int day) {
+        return Calendar.convertIntegerToDecemberDay(day);
     }
 }
