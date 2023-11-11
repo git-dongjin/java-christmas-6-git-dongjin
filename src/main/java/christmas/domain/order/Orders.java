@@ -1,5 +1,6 @@
-package christmas.domain;
+package christmas.domain.order;
 
+import christmas.domain.order.Order;
 import christmas.enums.Menu;
 
 import java.util.LinkedHashMap;

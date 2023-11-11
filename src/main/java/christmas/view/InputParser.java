@@ -1,7 +1,7 @@
 package christmas.view;
 
-import christmas.domain.Order;
-import christmas.domain.Orders;
+import christmas.domain.order.Order;
+import christmas.domain.order.Orders;
 import christmas.enums.Menu;
 
 import java.util.*;

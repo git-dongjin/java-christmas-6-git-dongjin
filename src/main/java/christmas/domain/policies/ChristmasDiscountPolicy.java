@@ -1,9 +1,12 @@
-package christmas.domain;
+package christmas.domain.policies;
 
-public class UntilChristmasDiscount {
+import christmas.domain.Day;
+import christmas.domain.money.Money;
+
+public class ChristmasDiscountPolicy {
     private final Day day;
 
-    public UntilChristmasDiscount(Day day) {
+    public ChristmasDiscountPolicy(Day day) {
         this.day = day;
     }
 

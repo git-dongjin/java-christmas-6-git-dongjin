@@ -1,9 +1,9 @@
 package christmas.controller;
 
 import christmas.domain.Day;
-import christmas.domain.Gifts;
-import christmas.domain.OrderTotalBeforeDiscount;
-import christmas.domain.OrdersMenuCount;
+import christmas.domain.policies.PresentGivePolicy;
+import christmas.domain.money.OrderTotalBeforeDiscount;
+import christmas.domain.order.OrdersMenuCount;
 import christmas.enums.Gift;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -25,7 +25,7 @@ public class PromotionHandler {
         outputView.print(ordersMenuCount);
         OrderTotalBeforeDiscount orderTotalBeforeDiscount = new OrderTotalBeforeDiscount(ordersMenuCount);
         outputView.print(orderTotalBeforeDiscount);
-        Gifts gifts = new Gifts(Gift.getPresents(ordersMenuCount.calculateOrderTotal()));
+        PresentGivePolicy gifts = new PresentGivePolicy(Gift.getPresents(ordersMenuCount.calculateOrderTotal()));
         outputView.print(gifts);
     }
 }

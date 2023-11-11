@@ -1,6 +1,6 @@
 package christmas.enums;
 
-import christmas.domain.Money;
+import christmas.domain.money.Money;
 
 import java.util.Arrays;
 import java.util.Map;

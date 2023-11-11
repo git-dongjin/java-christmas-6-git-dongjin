@@ -1,12 +1,15 @@
-package christmas.domain;
+package christmas.domain.policies;
 
+import christmas.domain.Day;
+import christmas.domain.money.Money;
+import christmas.domain.order.OrdersMenuCount;
 import christmas.enums.DayType;
 
-public class WeekDiscount {
+public class WeekDiscountPolicy {
     private final Day day;
     private final OrdersMenuCount ordersMenuCount;
 
-    public WeekDiscount(Day day, OrdersMenuCount ordersMenuCount) {
+    public WeekDiscountPolicy(Day day, OrdersMenuCount ordersMenuCount) {
         this.day = day;
         this.ordersMenuCount = ordersMenuCount;
     }

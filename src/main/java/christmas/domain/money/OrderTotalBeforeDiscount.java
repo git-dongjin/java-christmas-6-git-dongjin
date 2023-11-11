@@ -1,5 +1,7 @@
-package christmas.domain;
+package christmas.domain.money;
 
+import christmas.domain.order.OrdersMenuCount;
+import christmas.domain.policies.PresentGivePolicy;
 import christmas.enums.Gift;
 
 public class OrderTotalBeforeDiscount {
@@ -9,8 +11,8 @@ public class OrderTotalBeforeDiscount {
         this.orderTotal = orders.calculateOrderTotal();
     }
 
-    public Gifts calculateGift() {
-        return new Gifts(Gift.getPresents(orderTotal));
+    public PresentGivePolicy calculateGift() {
+        return new PresentGivePolicy(Gift.getPresents(orderTotal));
     }
 
     @Override

@@ -1,13 +1,14 @@
-package christmas.domain;
+package christmas.domain.policies;
 
+import christmas.domain.money.Money;
 import christmas.enums.Gift;
 
 import java.util.List;
 
-public class Gifts {
+public class PresentGivePolicy {
     private final List<Gift> gifts;
 
-    public Gifts(List<Gift> gifts) {
+    public PresentGivePolicy(List<Gift> gifts) {
         validateNotDuplicate(gifts);
         this.gifts = gifts;
     }
