@@ -6,10 +6,10 @@ import christmas.enums.Present;
 
 import java.util.List;
 
-public class PresentListPolicy implements ProfitPolicy, PresentPolicy {
+public class PresentMenuPolicy implements ProfitPolicy, PresentPolicy {
     private final List<Present> presents;
 
-    public PresentListPolicy(OrderTotalBeforeDiscount totalBeforeDiscount) {
+    public PresentMenuPolicy(OrderTotalBeforeDiscount totalBeforeDiscount) {
         List<Present> presents = totalBeforeDiscount.calculatePresents();
         validateNotDuplicate(presents);
         this.presents = presents;
