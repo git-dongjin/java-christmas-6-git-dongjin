@@ -8,13 +8,13 @@ import java.util.List;
 
 public class InputView {
     private final Reader reader;
-    private final InputParser inputParser;
     private final OutputView outputView;
+    private final InputParser inputParser;
 
-    public InputView(Reader reader, InputParser inputParser, OutputView outputView) {
+    public InputView(Reader reader, OutputView outputView) {
         this.reader = reader;
-        this.inputParser = inputParser;
         this.outputView = outputView;
+        this.inputParser = new InputParser();
     }
 
     public Day readDate() {

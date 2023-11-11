@@ -2,7 +2,6 @@ package christmas.controller.view;
 
 import christmas.domain.Day;
 import christmas.domain.order.OrdersMenuCount;
-import christmas.view.input.InputParser;
 import christmas.view.input.InputView;
 import christmas.view.input.Reader;
 import christmas.view.output.OutputView;
@@ -12,9 +11,9 @@ public class ViewController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public ViewController(Reader reader, InputParser inputParser, Writer writer) {
+    public ViewController(Reader reader, Writer writer) {
         this.outputView = new OutputView(writer);
-        this.inputView = new InputView(reader, inputParser, outputView);
+        this.inputView = new InputView(reader, outputView);
     }
 
     public Day inputDate() {
