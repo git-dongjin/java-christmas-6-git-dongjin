@@ -35,6 +35,18 @@ public class Money implements Comparable<Money> {
         return multiply(-1L);
     }
 
+    public boolean isNegative() {
+        return compareTo(Money.ZERO) < 0;
+    }
+
+    public boolean isPositive() {
+        return compareTo(Money.ZERO) > 0;
+    }
+
+    public boolean isZero() {
+        return this.equals(Money.ZERO);
+    }
+
     @Override
     public int compareTo(Money other) {
         return this.amount.compareTo(other.amount);

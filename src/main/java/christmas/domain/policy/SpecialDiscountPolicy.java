@@ -4,24 +4,31 @@ import christmas.domain.Day;
 import christmas.domain.money.Money;
 
 public class SpecialDiscountPolicy {
-    private final Day day;
+    private final Money profit;
 
     public SpecialDiscountPolicy(Day day) {
-        this.day = day;
+        this.profit = calculateProfit(day);
     }
 
-    public Money getProfit() {
+    @Override
+    public String toString() {
+        validatePolicy();
+        if (profit.isZero()) {
+            return "";
+        }
+        return "특별 할인: " + profit + "원";
+    }
+
+    private Money calculateProfit(Day day) {
         if (day.isStar()) {
             return Money.THOUSAND.negative();
         }
         return Money.ZERO;
     }
 
-    @Override
-    public String toString() {
-        if (day.isStar()) {
-            return "특별 할인: " + getProfit() + "원";
+    private void validatePolicy() {
+        if (profit.isPositive()) {
+            throw new IllegalStateException();
         }
-        return "";
     }
 }
