@@ -5,8 +5,8 @@ import christmas.domain.policy.PresentGivePolicy;
 import christmas.domain.money.OrderTotalBeforeDiscount;
 import christmas.domain.order.OrdersMenuCount;
 import christmas.enums.Gift;
-import christmas.view.InputView;
-import christmas.view.OutputView;
+import christmas.view.input.InputView;
+import christmas.view.output.OutputView;
 
 public class PromotionHandler {
     private final InputView inputView;

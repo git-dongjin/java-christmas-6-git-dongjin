@@ -1,7 +1,8 @@
-package christmas.view;
+package christmas.view.input;
 
 import christmas.domain.Day;
 import christmas.domain.order.OrdersMenuCount;
+import christmas.view.output.OutputView;
 
 import java.util.List;
 

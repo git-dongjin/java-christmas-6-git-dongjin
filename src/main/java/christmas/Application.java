@@ -2,7 +2,11 @@ package christmas;
 
 
 import christmas.controller.PromotionHandler;
-import christmas.view.*;
+import christmas.view.input.ConsoleReader;
+import christmas.view.input.InputParser;
+import christmas.view.input.InputView;
+import christmas.view.output.OutputView;
+import christmas.view.output.StdoutWriter;
 
 
 public class Application {

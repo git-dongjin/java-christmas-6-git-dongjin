@@ -1,4 +1,4 @@
-package christmas.view;
+package christmas.view.input;
 
 import christmas.domain.order.Order;
 import christmas.domain.order.Orders;

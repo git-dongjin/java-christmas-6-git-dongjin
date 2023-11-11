@@ -1,6 +1,4 @@
-package christmas.view;
-
-import christmas.domain.Day;
+package christmas.view.output;
 
 public class OutputView {
     private static final String NEW_LINE = System.lineSeparator(),
