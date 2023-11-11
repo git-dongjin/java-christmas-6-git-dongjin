@@ -67,4 +67,9 @@ public enum DecemberDay {
         LocalDate date = LocalDate.of(YEAR, MONTH, day);
         return date.getDayOfWeek();
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(MONTH) + "월 " + String.valueOf(day) + "일";
+    }
 }

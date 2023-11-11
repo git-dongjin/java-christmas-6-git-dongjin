@@ -49,6 +49,7 @@ public class OrdersMenuCount {
 
         for (Map.Entry<Menu, Integer> order : ordersMenuCount.entrySet()) {
             ordersBuilder.append(order.getKey().getName())
+                    .append(" ")
                     .append(order.getValue())
                     .append("개")
                     .append(System.lineSeparator());

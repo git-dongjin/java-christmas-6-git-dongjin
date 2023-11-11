@@ -35,7 +35,7 @@ public class Gifts {
         }
 
         for(Gift present : gifts) {
-            presentsBuilder.append(present);
+            presentsBuilder.append(present).append(System.lineSeparator());
         }
 
         return presentsBuilder.toString();

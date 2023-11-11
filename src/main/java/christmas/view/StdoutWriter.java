@@ -2,7 +2,7 @@ package christmas.view;
 
 public class StdoutWriter implements Writer {
     @Override
-    public void write(String string) {
-        System.out.println(string);
+    public void write(Object object) {
+        System.out.println(object);
     }
 }

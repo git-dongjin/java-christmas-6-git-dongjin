@@ -1,5 +1,7 @@
 package christmas.view;
 
+import christmas.domain.Day;
+
 public class OutputView {
     private static final String NEW_LINE = System.lineSeparator(),
             WELCOME = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.",
@@ -38,7 +40,7 @@ public class OutputView {
         print(READ_ORDERS_MENU_COUNT_ERROR);
     }
 
-    private void print(String string) {
-        writer.write(string);
+    public void print(Object object) {
+        writer.write(object);
     }
 }
