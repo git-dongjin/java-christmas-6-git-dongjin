@@ -6,7 +6,7 @@ import christmas.domain.money.Money;
 import christmas.domain.money.WeekdayDiscountProfit;
 import christmas.domain.order.OrdersMenuCount;
 
-public class WeekdayDiscountPolicy implements WeekDiscountPolicy {
+public class WeekdayDiscountPolicy implements DiscountPolicy {
     private final WeekdayDiscountProfit weekdayDiscountProfit;
 
     public WeekdayDiscountPolicy(Day day, OrdersMenuCount ordersMenuCount) {
@@ -14,6 +14,7 @@ public class WeekdayDiscountPolicy implements WeekDiscountPolicy {
         this.weekdayDiscountProfit = new WeekdayDiscountProfit(weekdayDiscountDay, ordersMenuCount);
     }
 
+    @Override
     public Money getProfit() {
         return weekdayDiscountProfit.getProfit();
     }

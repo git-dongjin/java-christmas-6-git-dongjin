@@ -5,7 +5,7 @@ import christmas.domain.day.SpecialDiscountDay;
 import christmas.domain.money.Money;
 import christmas.domain.money.SpecialDiscountProfit;
 
-public class SpecialDiscountPolicy {
+public class SpecialDiscountPolicy implements DiscountPolicy {
     private final SpecialDiscountProfit specialDiscountProfit;
 
     public SpecialDiscountPolicy(Day day) {
@@ -13,7 +13,8 @@ public class SpecialDiscountPolicy {
         this.specialDiscountProfit = new SpecialDiscountProfit(specialDiscountDay);
     }
 
-    private Money getProfit() {
+    @Override
+    public Money getProfit() {
         return specialDiscountProfit.getProfit();
     }
 
