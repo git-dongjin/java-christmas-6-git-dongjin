@@ -1,30 +1,31 @@
 package christmas.domain.policy;
 
+import christmas.domain.day.Day;
+import christmas.domain.day.WeekdayDiscountDay;
 import christmas.domain.money.Money;
+import christmas.domain.money.WeekendDiscountProfit;
 import christmas.domain.order.OrdersMenuCount;
 
 public class WeekendDiscountPolicy implements WeekDiscountPolicy {
-    private final Money profit;
+    private final WeekendDiscountProfit weekendDiscountProfit;
 
-    public WeekendDiscountPolicy(OrdersMenuCount menuCount) {
-        Money profit = calculateProfit(menuCount);
-        validateProfit(profit);
-        this.profit = profit;
+    public WeekendDiscountPolicy(Day day, OrdersMenuCount ordersMenuCount) {
+        WeekdayDiscountDay weekdayDiscountDay = new WeekdayDiscountDay(day);
+        this.weekendDiscountProfit = new WeekendDiscountProfit(weekdayDiscountDay, ordersMenuCount);
+    }
+
+    public Money getProfit() {
+        return weekendDiscountProfit.getProfit();
     }
 
     @Override
     public String toString() {
-        return "주말 할인: " + profit + "원";
-    }
+        Money profit = getProfit();
 
-    private Money calculateProfit(OrdersMenuCount menuCount) {
-        int mainCount = menuCount.getMainCount();
-        return Money.YEAR_AMOUNT.multiply(mainCount).negative();
-    }
-
-    private void validateProfit(Money profit) {
-        if (profit.isPositive()) {
-            throw new IllegalStateException();
+        if (profit.isZero()) {
+            return "";
         }
+
+        return "주말 할인: " + profit + "원";
     }
 }

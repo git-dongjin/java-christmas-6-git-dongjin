@@ -1,12 +1,12 @@
 package christmas.domain.day;
 
-public class WeekdayDiscountDay {
+public class WeekendDiscountDay {
     private static final Day START_DAY = Day.FIRST_DAY,
             END_DAY = Day.LAST_DAY;
 
     private final Day day;
 
-    public WeekdayDiscountDay(Day day) {
+    public WeekendDiscountDay(Day day) {
         this.day = day;
     }
 
@@ -14,7 +14,7 @@ public class WeekdayDiscountDay {
         return !(day.isBefore(START_DAY) || day.isAfter(END_DAY));
     }
 
-    public boolean isWeekday() {
-        return day.isWeekday();
+    public boolean isWeekend() {
+        return day.isWeekend();
     }
 }

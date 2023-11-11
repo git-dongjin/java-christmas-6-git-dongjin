@@ -36,6 +36,10 @@ public class Day {
         return Calendar.isWeekday(day.getDayOfWeek());
     }
 
+    public boolean isWeekend() {
+        return Calendar.isWeekend(day.getDayOfWeek());
+    }
+
     @Override
     public String toString() {
         return day + "에 우테코 식당에서 받을 이벤트 혜택 미리 보기!" + System.lineSeparator();

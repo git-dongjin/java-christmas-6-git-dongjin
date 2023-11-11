@@ -36,6 +36,10 @@ public enum Calendar {
         return WEEKDAY.contains(dayOfWeek);
     }
 
+    public static boolean isWeekend(DayOfWeek dayOfWeek) {
+        return WEEKEND.contains(dayOfWeek);
+    }
+
     public static boolean contains(int day) {
         return INTEGER_TO_CALENDAR.containsKey(day);
     }
