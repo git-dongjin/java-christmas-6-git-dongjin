@@ -1,7 +1,7 @@
 package christmas.controller;
 
 import christmas.domain.Day;
-import christmas.domain.policies.PresentGivePolicy;
+import christmas.domain.policy.PresentGivePolicy;
 import christmas.domain.money.OrderTotalBeforeDiscount;
 import christmas.domain.order.OrdersMenuCount;
 import christmas.enums.Gift;

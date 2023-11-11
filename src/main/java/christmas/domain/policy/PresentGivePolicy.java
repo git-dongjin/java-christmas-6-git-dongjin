@@ -1,4 +1,4 @@
-package christmas.domain.policies;
+package christmas.domain.policy;
 
 import christmas.domain.money.Money;
 import christmas.enums.Gift;

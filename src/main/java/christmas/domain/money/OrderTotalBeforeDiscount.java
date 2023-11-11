@@ -1,7 +1,7 @@
 package christmas.domain.money;
 
 import christmas.domain.order.OrdersMenuCount;
-import christmas.domain.policies.PresentGivePolicy;
+import christmas.domain.policy.PresentGivePolicy;
 import christmas.enums.Gift;
 
 public class OrderTotalBeforeDiscount {
