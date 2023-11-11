@@ -6,7 +6,7 @@ import christmas.domain.money.Money;
 import christmas.domain.money.WeekendDiscountProfit;
 import christmas.domain.order.OrdersMenuCount;
 
-public class WeekendDiscountPolicy implements DiscountPolicy {
+public class WeekendDiscountPolicy implements ProfitPolicy {
     private final WeekendDiscountProfit weekendDiscountProfit;
 
     public WeekendDiscountPolicy(Day day, OrdersMenuCount ordersMenuCount) {

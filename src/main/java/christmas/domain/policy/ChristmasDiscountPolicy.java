@@ -5,7 +5,7 @@ import christmas.domain.day.Day;
 import christmas.domain.money.ChristmasDiscountProfit;
 import christmas.domain.money.Money;
 
-public class ChristmasDiscountPolicy implements DiscountPolicy {
+public class ChristmasDiscountPolicy implements ProfitPolicy {
     private final ChristmasDiscountProfit christmasProfit;
 
     public ChristmasDiscountPolicy(Day day) {

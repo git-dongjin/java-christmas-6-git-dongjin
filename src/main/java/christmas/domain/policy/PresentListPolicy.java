@@ -1,17 +1,23 @@
 package christmas.domain.policy;
 
+import christmas.domain.money.Money;
 import christmas.domain.money.OrderTotalBeforeDiscount;
 import christmas.enums.Present;
 
 import java.util.List;
 
-public class PresentListPolicy {
+public class PresentListPolicy implements ProfitPolicy, PresentPolicy {
     private final List<Present> presents;
 
     public PresentListPolicy(OrderTotalBeforeDiscount totalBeforeDiscount) {
         List<Present> presents = totalBeforeDiscount.calculatePresents();
         validateNotDuplicate(presents);
         this.presents = presents;
+    }
+
+    @Override
+    public Money getProfit() {
+        return null;
     }
 
     @Override
