@@ -4,13 +4,24 @@ import christmas.domain.Day;
 import christmas.domain.money.Money;
 
 public class ChristmasDiscountPolicy {
-    private final Day day;
+    private final Money profit;
 
     public ChristmasDiscountPolicy(Day day) {
-        this.day = day;
+        Money profit = calculateProfit(day);
+        validateProfit(profit);
+        this.profit = profit;
     }
 
-    public Money getProfit() {
+    @Override
+    public String toString() {
+        if (profit.isZero()) {
+            return "";
+        }
+
+        return "크리스마스 디데이 할인: " + profit + "원";
+    }
+
+    private Money calculateProfit(Day day) {
         if (day.isNotChristmasDiscountPeriod()) {
             return Money.ZERO;
         }
@@ -18,14 +29,9 @@ public class ChristmasDiscountPolicy {
         return profit.add(Money.HUNDRED.multiply(day.calculateDaysFromFirstDay())).negative();
     }
 
-    @Override
-    public String toString() {
-        Money profit = getProfit();
-
-        if (profit.equals(Money.ZERO)) {
-            return "";
+    private void validateProfit(Money money) {
+        if (money.isPositive()) {
+            throw new IllegalStateException();
         }
-
-        return "크리스마스 디데이 할인: " + getProfit() + "원";
     }
 }
