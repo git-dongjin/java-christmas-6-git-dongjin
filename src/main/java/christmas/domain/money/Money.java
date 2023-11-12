@@ -9,11 +9,10 @@ public class Money implements Comparable<Money> {
             HUNDRED = new Money(BigDecimal.valueOf(100L)),
             THOUSAND = new Money(BigDecimal.valueOf(1_000L)),
             YEAR_AMOUNT = new Money(BigDecimal.valueOf(2_023L)),
-            TEN_THOUSAND = new Money(BigDecimal.valueOf(10_000L)),
-            HUNDRED_TWENTY_THOUSAND = new Money(BigDecimal.valueOf(120_000L));
+            TEN_THOUSAND = new Money(BigDecimal.valueOf(10_000L));
     private final BigDecimal amount;
 
-    public Money(BigDecimal amount) {
+    private Money(BigDecimal amount) {
         this.amount = amount;
     }
 

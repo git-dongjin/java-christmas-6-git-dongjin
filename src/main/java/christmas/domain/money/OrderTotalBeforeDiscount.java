@@ -1,19 +1,17 @@
 package christmas.domain.money;
 
 import christmas.domain.order.OrdersMenuCount;
-import christmas.enums.Present;
 
-import java.util.List;
-
-public class OrderTotalBeforeDiscount {
+public class OrderTotalBeforeDiscount implements Comparable<Money> {
     private final Money orderTotal;
 
     public OrderTotalBeforeDiscount(OrdersMenuCount menuCount) {
         this.orderTotal = menuCount.calculateOrderTotal();
     }
 
-    public List<Present> calculatePresents() {
-        return Present.getPresents(orderTotal);
+    @Override
+    public int compareTo(Money other) {
+        return orderTotal.compareTo(other);
     }
 
     @Override
