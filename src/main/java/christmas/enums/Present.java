@@ -1,7 +1,7 @@
 package christmas.enums;
 
-import christmas.domain.money.Money;
-import christmas.domain.money.OrderTotalBeforeDiscount;
+import christmas.domain.unit.Money;
+import christmas.domain.total.OrderTotalBeforeDiscount;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,6 +1,8 @@
-package christmas.domain.money;
+package christmas.domain.total;
 
-import christmas.domain.order.OrdersMenuCount;
+import christmas.domain.profit.TotalProfit;
+import christmas.domain.unit.Money;
+import christmas.domain.unit.OrdersMenuCount;
 
 public class OrderTotalBeforeDiscount {
     private final Money orderTotal;
@@ -13,7 +15,7 @@ public class OrderTotalBeforeDiscount {
         return orderTotal.notLessThan(minimumOrderTotal);
     }
 
-    public Money calculateExpectedTotal(ProfitTotal profitTotal) {
+    public Money calculateExpectedTotal(TotalProfit profitTotal) {
         return orderTotal.add(profitTotal.getTotalProfitExceptPresent());
     }
 

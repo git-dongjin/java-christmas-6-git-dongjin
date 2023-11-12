@@ -1,13 +1,14 @@
-package christmas.domain.money;
+package christmas.domain.profit;
 
-import christmas.domain.day.WeekdayDiscountDay;
-import christmas.domain.order.OrdersMenuCount;
+import christmas.domain.period.WeekdayDiscountPeriod;
+import christmas.domain.unit.Money;
+import christmas.domain.unit.OrdersMenuCount;
 
 public class WeekdayDiscountProfit {
-    private final WeekdayDiscountDay weekdayDiscountDay;
+    private final WeekdayDiscountPeriod weekdayDiscountDay;
     private final OrdersMenuCount ordersMenuCount;
 
-    public WeekdayDiscountProfit(WeekdayDiscountDay weekdayDiscountDay, OrdersMenuCount ordersMenuCount) {
+    public WeekdayDiscountProfit(WeekdayDiscountPeriod weekdayDiscountDay, OrdersMenuCount ordersMenuCount) {
         this.weekdayDiscountDay = weekdayDiscountDay;
         this.ordersMenuCount = ordersMenuCount;
     }

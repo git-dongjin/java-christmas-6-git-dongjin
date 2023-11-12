@@ -1,25 +1,25 @@
 package christmas.domain.policy;
 
-import christmas.domain.day.Day;
-import christmas.domain.day.PresentDay;
-import christmas.domain.money.Money;
-import christmas.domain.money.OrderTotalBeforeDiscount;
-import christmas.domain.money.PresentProfit;
-import christmas.domain.order.Presents;
+import christmas.domain.unit.Day;
+import christmas.domain.period.PresentGivePeriod;
+import christmas.domain.unit.Money;
+import christmas.domain.total.OrderTotalBeforeDiscount;
+import christmas.domain.profit.PresentGiveProfit;
+import christmas.domain.unit.Presents;
 import christmas.enums.Present;
 
 import java.util.List;
 
 public class PresentMenuPolicy implements ProfitPolicy, PresentPolicy {
     private final Presents presents;
-    private final PresentProfit presentProfit;
+    private final PresentGiveProfit presentProfit;
 
     public PresentMenuPolicy(Day day, OrderTotalBeforeDiscount orderTotalBeforeDiscount) {
         List<Present> presents = Present.getPresents(orderTotalBeforeDiscount);
         this.presents = new Presents(presents);
-        PresentDay presentDay = new PresentDay(day);
+        PresentGivePeriod presentDay = new PresentGivePeriod(day);
 
-        this.presentProfit = new PresentProfit(presentDay, this.presents);
+        this.presentProfit = new PresentGiveProfit(presentDay, this.presents);
     }
 
     @Override

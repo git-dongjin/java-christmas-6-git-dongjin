@@ -1,11 +1,13 @@
-package christmas.domain.day;
+package christmas.domain.period;
 
-public class ChristmasDiscountDay {
+import christmas.domain.unit.Day;
+
+public class ChristmasDiscountPeriod {
     private static final Day START_DAY = Day.FIRST_DAY,
             END_DAY = Day.CHRISTMAS;
     private final Day day;
 
-    public ChristmasDiscountDay(Day day) {
+    public ChristmasDiscountPeriod(Day day) {
         this.day = day;
     }
 

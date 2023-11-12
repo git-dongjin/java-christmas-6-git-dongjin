@@ -1,6 +1,6 @@
 package christmas.domain.policy;
 
-import christmas.domain.money.Money;
+import christmas.domain.unit.Money;
 
 public interface ProfitPolicy {
     Money getProfit();

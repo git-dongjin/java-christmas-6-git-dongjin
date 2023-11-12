@@ -1,12 +1,12 @@
 package christmas.domain.policy;
 
-import christmas.domain.money.ProfitTotal;
+import christmas.domain.profit.TotalProfit;
 import christmas.enums.Badge;
 
 public class BadgePolicy {
     private final Badge badge;
 
-    public BadgePolicy(ProfitTotal profitTotal) {
+    public BadgePolicy(TotalProfit profitTotal) {
         this.badge = Badge.getBadge(profitTotal);
     }
 

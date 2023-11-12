@@ -1,7 +1,7 @@
 package christmas.domain.policy;
 
-import christmas.domain.money.Money;
-import christmas.domain.money.OrderTotalBeforeDiscount;
+import christmas.domain.unit.Money;
+import christmas.domain.total.OrderTotalBeforeDiscount;
 
 public class MinimumOrderTotalPolicy {
     private static final Money minimumOrderTotal = Money.TEN_THOUSAND;

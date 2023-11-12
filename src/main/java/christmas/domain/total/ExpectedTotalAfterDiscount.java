@@ -1,9 +1,12 @@
-package christmas.domain.money;
+package christmas.domain.total;
+
+import christmas.domain.profit.TotalProfit;
+import christmas.domain.unit.Money;
 
 public class ExpectedTotalAfterDiscount {
     private final Money expectedTotal;
 
-    public ExpectedTotalAfterDiscount(OrderTotalBeforeDiscount orderTotalBeforeDiscount, ProfitTotal profitTotal) {
+    public ExpectedTotalAfterDiscount(OrderTotalBeforeDiscount orderTotalBeforeDiscount, TotalProfit profitTotal) {
         this.expectedTotal = orderTotalBeforeDiscount.calculateExpectedTotal(profitTotal);
     }
 

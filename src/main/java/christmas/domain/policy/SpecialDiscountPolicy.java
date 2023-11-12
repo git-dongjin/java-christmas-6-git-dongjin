@@ -1,15 +1,15 @@
 package christmas.domain.policy;
 
-import christmas.domain.day.Day;
-import christmas.domain.day.SpecialDiscountDay;
-import christmas.domain.money.Money;
-import christmas.domain.money.SpecialDiscountProfit;
+import christmas.domain.unit.Day;
+import christmas.domain.period.SpecialDiscountPeriod;
+import christmas.domain.unit.Money;
+import christmas.domain.profit.SpecialDiscountProfit;
 
 public class SpecialDiscountPolicy implements ProfitPolicy {
     private final SpecialDiscountProfit specialDiscountProfit;
 
     public SpecialDiscountPolicy(Day day) {
-        SpecialDiscountDay specialDiscountDay = new SpecialDiscountDay(day);
+        SpecialDiscountPeriod specialDiscountDay = new SpecialDiscountPeriod(day);
         this.specialDiscountProfit = new SpecialDiscountProfit(specialDiscountDay);
     }
 

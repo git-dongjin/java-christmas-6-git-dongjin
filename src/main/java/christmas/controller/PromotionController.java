@@ -1,10 +1,10 @@
 package christmas.controller;
 
-import christmas.domain.day.Day;
-import christmas.domain.money.ExpectedTotalAfterDiscount;
-import christmas.domain.money.OrderTotalBeforeDiscount;
-import christmas.domain.money.ProfitTotal;
-import christmas.domain.order.OrdersMenuCount;
+import christmas.domain.unit.Day;
+import christmas.domain.total.ExpectedTotalAfterDiscount;
+import christmas.domain.total.OrderTotalBeforeDiscount;
+import christmas.domain.profit.TotalProfit;
+import christmas.domain.unit.OrdersMenuCount;
 import christmas.domain.policy.*;
 import christmas.view.input.Reader;
 import christmas.view.output.Writer;
@@ -17,7 +17,7 @@ public class PromotionController {
     private OrderTotalBeforeDiscount orderTotalBeforeDiscount;
     private PresentPolicy presentPolicy;
     private ProfitPolicies profitPolicies;
-    private ProfitTotal profitTotal;
+    private TotalProfit profitTotal;
     private ExpectedTotalAfterDiscount expectedTotalAfterDiscount;
     private BadgePolicy badgePolicy;
 
@@ -72,7 +72,7 @@ public class PromotionController {
         return domainController.getProfitPolicies(day, ordersMenuCount, orderTotalBeforeDiscount);
     }
 
-    private ProfitTotal getProfitTotal() {
+    private TotalProfit getProfitTotal() {
         return domainController.getProfitTotal(profitPolicies);
     }
 

@@ -1,4 +1,4 @@
-package christmas.domain.money;
+package christmas.domain.unit;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;

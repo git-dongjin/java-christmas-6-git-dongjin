@@ -1,7 +1,7 @@
 package christmas.utils;
 
-import christmas.domain.order.Order;
-import christmas.domain.order.Orders;
+import christmas.domain.unit.Order;
+import christmas.domain.unit.Orders;
 import christmas.enums.Menu;
 
 import java.util.Arrays;

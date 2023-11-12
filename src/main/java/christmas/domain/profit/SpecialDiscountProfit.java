@@ -1,11 +1,12 @@
-package christmas.domain.money;
+package christmas.domain.profit;
 
-import christmas.domain.day.SpecialDiscountDay;
+import christmas.domain.period.SpecialDiscountPeriod;
+import christmas.domain.unit.Money;
 
 public class SpecialDiscountProfit {
-    private final SpecialDiscountDay specialDiscountDay;
+    private final SpecialDiscountPeriod specialDiscountDay;
 
-    public SpecialDiscountProfit(SpecialDiscountDay specialDiscountDay) {
+    public SpecialDiscountProfit(SpecialDiscountPeriod specialDiscountDay) {
         this.specialDiscountDay = specialDiscountDay;
     }
 

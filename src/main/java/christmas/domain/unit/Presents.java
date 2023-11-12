@@ -1,6 +1,5 @@
-package christmas.domain.order;
+package christmas.domain.unit;
 
-import christmas.domain.money.Money;
 import christmas.enums.Present;
 
 import java.util.List;

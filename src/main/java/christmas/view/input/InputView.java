@@ -1,7 +1,7 @@
 package christmas.view.input;
 
-import christmas.domain.day.Day;
-import christmas.domain.order.OrdersMenuCount;
+import christmas.domain.unit.Day;
+import christmas.domain.unit.OrdersMenuCount;
 import christmas.utils.Parser;
 import christmas.view.output.OutputView;
 

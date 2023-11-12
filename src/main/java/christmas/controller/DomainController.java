@@ -1,10 +1,10 @@
 package christmas.controller;
 
-import christmas.domain.day.Day;
-import christmas.domain.money.ExpectedTotalAfterDiscount;
-import christmas.domain.money.OrderTotalBeforeDiscount;
-import christmas.domain.money.ProfitTotal;
-import christmas.domain.order.OrdersMenuCount;
+import christmas.domain.unit.Day;
+import christmas.domain.total.ExpectedTotalAfterDiscount;
+import christmas.domain.total.OrderTotalBeforeDiscount;
+import christmas.domain.profit.TotalProfit;
+import christmas.domain.unit.OrdersMenuCount;
 import christmas.domain.policy.*;
 
 import java.util.ArrayList;
@@ -36,19 +36,19 @@ public class DomainController {
         return new ProfitPolicies(profitPoliciesList);
     }
 
-    public ProfitTotal getProfitTotal(ProfitPolicies profitPolicies) {
-        return new ProfitTotal(profitPolicies);
+    public TotalProfit getProfitTotal(ProfitPolicies profitPolicies) {
+        return new TotalProfit(profitPolicies);
     }
 
     private MinimumOrderTotalPolicy getMinimumOrderTotalPolicy(OrderTotalBeforeDiscount orderTotalBeforeDiscount) {
         return new MinimumOrderTotalPolicy(orderTotalBeforeDiscount);
     }
 
-    public ExpectedTotalAfterDiscount getExpectedTotalAfterDiscount(OrderTotalBeforeDiscount orderTotalBeforeDiscount, ProfitTotal profitTotal) {
+    public ExpectedTotalAfterDiscount getExpectedTotalAfterDiscount(OrderTotalBeforeDiscount orderTotalBeforeDiscount, TotalProfit profitTotal) {
         return new ExpectedTotalAfterDiscount(orderTotalBeforeDiscount, profitTotal);
     }
 
-    public BadgePolicy getBadgePolicy(ProfitTotal profitTotal) {
+    public BadgePolicy getBadgePolicy(TotalProfit profitTotal) {
         return new BadgePolicy(profitTotal);
     }
 }

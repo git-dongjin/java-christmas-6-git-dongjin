@@ -1,12 +1,13 @@
-package christmas.domain.money;
+package christmas.domain.profit;
 
 import christmas.domain.policy.ProfitPolicies;
 import christmas.domain.policy.ProfitPolicy;
+import christmas.domain.unit.Money;
 
-public class ProfitTotal {
+public class TotalProfit {
     private final ProfitPolicies profitPolicies;
 
-    public ProfitTotal(ProfitPolicies profitPolicies) {
+    public TotalProfit(ProfitPolicies profitPolicies) {
         this.profitPolicies = profitPolicies;
     }
 
@@ -21,7 +22,7 @@ public class ProfitTotal {
     }
 
     public Money getTotalProfitExceptPresent() {
-        return new ProfitTotal(profitPolicies.getProfitPoliciesExceptPresentPolicies()).getTotalProfit();
+        return new TotalProfit(profitPolicies.getProfitPoliciesExceptPresentPolicies()).getTotalProfit();
     }
 
     @Override

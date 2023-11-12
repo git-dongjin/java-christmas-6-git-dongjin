@@ -1,4 +1,4 @@
-package christmas.domain.day;
+package christmas.domain.unit;
 
 import christmas.enums.Calendar;
 

@@ -1,16 +1,16 @@
 package christmas.domain.policy;
 
-import christmas.domain.day.Day;
-import christmas.domain.day.WeekdayDiscountDay;
-import christmas.domain.money.Money;
-import christmas.domain.money.WeekdayDiscountProfit;
-import christmas.domain.order.OrdersMenuCount;
+import christmas.domain.unit.Day;
+import christmas.domain.period.WeekdayDiscountPeriod;
+import christmas.domain.unit.Money;
+import christmas.domain.profit.WeekdayDiscountProfit;
+import christmas.domain.unit.OrdersMenuCount;
 
 public class WeekdayDiscountPolicy implements ProfitPolicy {
     private final WeekdayDiscountProfit weekdayDiscountProfit;
 
     public WeekdayDiscountPolicy(Day day, OrdersMenuCount ordersMenuCount) {
-        WeekdayDiscountDay weekdayDiscountDay = new WeekdayDiscountDay(day);
+        WeekdayDiscountPeriod weekdayDiscountDay = new WeekdayDiscountPeriod(day);
         this.weekdayDiscountProfit = new WeekdayDiscountProfit(weekdayDiscountDay, ordersMenuCount);
     }
 

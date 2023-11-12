@@ -1,11 +1,13 @@
-package christmas.domain.day;
+package christmas.domain.period;
 
-public class WeekdayDiscountDay {
+import christmas.domain.unit.Day;
+
+public class SpecialDiscountPeriod {
     private static final Day START_DAY = Day.FIRST_DAY,
             END_DAY = Day.LAST_DAY;
     private final Day day;
 
-    public WeekdayDiscountDay(Day day) {
+    public SpecialDiscountPeriod(Day day) {
         this.day = day;
     }
 
@@ -13,7 +15,7 @@ public class WeekdayDiscountDay {
         return !(day.isBefore(START_DAY) || day.isAfter(END_DAY));
     }
 
-    public boolean isWeekday() {
-        return day.isWeekday();
+    public boolean isStar() {
+        return day.isStar();
     }
 }
