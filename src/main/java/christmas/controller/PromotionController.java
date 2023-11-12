@@ -1,14 +1,11 @@
 package christmas.controller;
 
-import christmas.controller.domain.DomainController;
-import christmas.controller.view.ViewController;
 import christmas.domain.day.Day;
 import christmas.domain.money.ExpectedTotalAfterDiscount;
 import christmas.domain.money.OrderTotalBeforeDiscount;
 import christmas.domain.money.ProfitTotal;
 import christmas.domain.order.OrdersMenuCount;
 import christmas.domain.policy.*;
-import christmas.enums.Badge;
 import christmas.view.input.Reader;
 import christmas.view.output.Writer;
 

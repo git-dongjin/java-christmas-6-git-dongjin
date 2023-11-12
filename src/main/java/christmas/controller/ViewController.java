@@ -1,4 +1,4 @@
-package christmas.controller.view;
+package christmas.controller;
 
 import christmas.domain.day.Day;
 import christmas.domain.order.OrdersMenuCount;
@@ -30,22 +30,6 @@ public class ViewController {
 
     public void outputWelcome() {
         outputView.printWelcome();
-    }
-
-    public void outputReadDate() {
-        outputView.printReadDate();
-    }
-
-    public void outputReadOrdersMenuCount() {
-        outputView.printReadOrdersMenuCount();
-    }
-
-    public void outputReadDateError() {
-        outputView.printReadDateError();
-    }
-
-    public void outputReadOrdersMenuCountError() {
-        outputView.printReadOrdersMenuCountError();
     }
 
     public void output(Object object) {
