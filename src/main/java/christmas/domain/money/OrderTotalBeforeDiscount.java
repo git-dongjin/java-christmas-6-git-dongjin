@@ -9,6 +9,10 @@ public class OrderTotalBeforeDiscount implements Comparable<Money> {
         this.orderTotal = menuCount.calculateOrderTotal();
     }
 
+    public Money calculateExpectedTotal(ProfitTotal profitTotal) {
+        return orderTotal.add(profitTotal.getTotalProfitExceptPresent());
+    }
+
     @Override
     public int compareTo(Money other) {
         return orderTotal.compareTo(other);
