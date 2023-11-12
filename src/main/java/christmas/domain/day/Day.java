@@ -11,6 +11,7 @@ public class Day {
             LAST_DAY = new Day(Calendar.LAST_DAY);
     private final LocalDate day;
 
+
     public Day(int day) {
         validate(day);
         this.day = Calendar.convertIntegerToLocalDate(day);
