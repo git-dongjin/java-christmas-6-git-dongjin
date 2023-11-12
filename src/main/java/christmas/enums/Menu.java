@@ -22,7 +22,7 @@ public enum Menu {
     RED_WINE(DRINK, "레드와인", new Money(60_000L)),
     CHAMPAGNE(DRINK, "샴페인", new Money(25_000L));
 
-    private static final Map<String, Menu> STRING_TO_MENU = Arrays.stream(values()).collect(Collectors.toMap(Menu::getName, value -> value));
+    private static final Map<String, Menu> STRING_TO_MENU = Arrays.stream(values()).collect(Collectors.toMap(value -> value.name, value -> value));
     private final MenuCategory category;
     private final String name;
     private final Money price;
@@ -60,11 +60,12 @@ public enum Menu {
         return category.equals(DRINK);
     }
 
-    public String getName() {
-        return name;
-    }
-
     public Money multiply(int count) {
         return price.multiply(count);
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
