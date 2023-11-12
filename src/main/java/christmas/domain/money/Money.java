@@ -4,12 +4,13 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.Objects;
 
-public class Money implements Comparable<Money> {
+public class Money {
     public static final Money ZERO = new Money(0L),
             HUNDRED = new Money(100L),
             THOUSAND = new Money(1_000L),
             YEAR_AMOUNT = new Money(2_023L),
             TEN_THOUSAND = new Money(10_000L);
+    private static final int SAME = 0;
     private final BigDecimal amount;
 
     private Money(BigDecimal amount) {
@@ -38,9 +39,8 @@ public class Money implements Comparable<Money> {
         return this.equals(Money.ZERO);
     }
 
-    @Override
-    public int compareTo(Money other) {
-        return this.amount.compareTo(other.amount);
+    public boolean notLessThan(Money other) {
+        return this.biggerThan(other) || this.equals(other);
     }
 
     @Override
@@ -60,5 +60,9 @@ public class Money implements Comparable<Money> {
     @Override
     public int hashCode() {
         return Objects.hash(amount);
+    }
+
+    private boolean biggerThan(Money other) {
+        return amount.compareTo(other.amount) > SAME;
     }
 }

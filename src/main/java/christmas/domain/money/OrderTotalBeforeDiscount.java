@@ -2,20 +2,23 @@ package christmas.domain.money;
 
 import christmas.domain.order.OrdersMenuCount;
 
-public class OrderTotalBeforeDiscount implements Comparable<Money> {
+public class OrderTotalBeforeDiscount {
     private final Money orderTotal;
 
     public OrderTotalBeforeDiscount(OrdersMenuCount menuCount) {
         this.orderTotal = menuCount.calculateOrderTotal();
     }
 
+    public boolean isEventAvailable(Money minimumOrderTotal) {
+        return orderTotal.notLessThan(minimumOrderTotal);
+    }
+
     public Money calculateExpectedTotal(ProfitTotal profitTotal) {
         return orderTotal.add(profitTotal.getTotalProfitExceptPresent());
     }
 
-    @Override
-    public int compareTo(Money other) {
-        return orderTotal.compareTo(other);
+    public boolean notLessThan(Money other) {
+        return orderTotal.notLessThan(other);
     }
 
     @Override

@@ -2,7 +2,6 @@ package christmas.domain.order;
 
 import christmas.domain.money.Money;
 import christmas.enums.Menu;
-import christmas.enums.MenuCategory;
 
 import java.util.Map;
 

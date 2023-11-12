@@ -11,13 +11,12 @@ public enum Badge {
     STAR("별", new Money(5_000L)),
     BLANK("없음", Money.ZERO);
 
-    private static final int SAME = 0;
     private final String name;
     private final Money minProfit;
 
     public static Badge getBadge(ProfitTotal profitTotal) {
         return Arrays.stream(values())
-                .filter(value -> profitTotal.getTotalProfit().negative().compareTo(value.minProfit) >= SAME)
+                .filter(value -> profitTotal.getTotalProfit().negative().notLessThan(value.minProfit))
                 .findFirst()
                 .orElseThrow(IllegalStateException::new);
     }

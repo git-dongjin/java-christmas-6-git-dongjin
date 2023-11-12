@@ -1,8 +1,8 @@
 package christmas.domain.order;
 
 import christmas.enums.Menu;
-import org.mockito.internal.matchers.Or;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +19,7 @@ public class Order {
             orderMap.put(order.menu, order.count);
         }
 
-        return Map.copyOf(orderMap);
+        return Collections.unmodifiableMap(new LinkedHashMap<>(orderMap));
     }
 
     public static void validateMenuNotDuplicate(List<Order> orders) {

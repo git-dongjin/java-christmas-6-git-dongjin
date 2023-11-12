@@ -1,19 +1,19 @@
 package christmas.domain.money;
 
-import christmas.domain.day.WeekdayDiscountDay;
+import christmas.domain.day.WeekendDiscountDay;
 import christmas.domain.order.OrdersMenuCount;
 
 public class WeekendDiscountProfit {
-    private final WeekdayDiscountDay weekdayDiscountDay;
+    private final WeekendDiscountDay weekendDiscountDay;
     private final OrdersMenuCount ordersMenuCount;
 
-    public WeekendDiscountProfit(WeekdayDiscountDay weekdayDiscountDay, OrdersMenuCount ordersMenuCount) {
-        this.weekdayDiscountDay = weekdayDiscountDay;
+    public WeekendDiscountProfit(WeekendDiscountDay weekendDiscountDay, OrdersMenuCount ordersMenuCount) {
+        this.weekendDiscountDay = weekendDiscountDay;
         this.ordersMenuCount = ordersMenuCount;
     }
 
     public Money getProfit() {
-        if (!weekdayDiscountDay.isEventPeriod() || !weekdayDiscountDay.isWeekday()) {
+        if (!weekendDiscountDay.isEventPeriod() || !weekendDiscountDay.isWeekend()) {
             return Money.ZERO;
         }
         return calculateProfit();

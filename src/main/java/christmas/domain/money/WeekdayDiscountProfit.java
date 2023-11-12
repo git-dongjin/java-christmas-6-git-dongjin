@@ -13,7 +13,7 @@ public class WeekdayDiscountProfit {
     }
 
     public Money getProfit() {
-        if (!weekdayDiscountDay.isEventPeriod() || weekdayDiscountDay.isWeekday()) {
+        if (!weekdayDiscountDay.isEventPeriod() || !weekdayDiscountDay.isWeekday()) {
             return Money.ZERO;
         }
         return calculateProfit();
