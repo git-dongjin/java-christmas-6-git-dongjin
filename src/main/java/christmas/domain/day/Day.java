@@ -30,15 +30,15 @@ public class Day {
     }
 
     public boolean isStar() {
-        return Calendar.isStar(day.getDayOfMonth());
+        return Calendar.isStar(day);
     }
 
     public boolean isWeekday() {
-        return Calendar.isWeekday(day.getDayOfWeek());
+        return Calendar.isWeekday(day);
     }
 
     public boolean isWeekend() {
-        return Calendar.isWeekend(day.getDayOfWeek());
+        return Calendar.isWeekend(day);
     }
 
     @Override

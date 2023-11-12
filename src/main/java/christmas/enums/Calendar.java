@@ -27,21 +27,29 @@ public enum Calendar {
         return LocalDate.of(YEAR, MONTH, INTEGER_TO_CALENDAR.get(day).day);
     }
 
-    public static boolean isStar(int day) {
-        validateDay(day);
-        return INTEGER_TO_CALENDAR.get(day).star;
+    public static boolean isStar(LocalDate date) {
+        validateLocalDate(date);
+        return INTEGER_TO_CALENDAR.get(date.getDayOfMonth()).star;
     }
 
-    public static boolean isWeekday(DayOfWeek dayOfWeek) {
-        return WEEKDAY.contains(dayOfWeek);
+    public static boolean isWeekday(LocalDate date) {
+        validateLocalDate(date);
+        return WEEKDAY.contains(date.getDayOfWeek());
     }
 
-    public static boolean isWeekend(DayOfWeek dayOfWeek) {
-        return WEEKEND.contains(dayOfWeek);
+    public static boolean isWeekend(LocalDate date) {
+        validateLocalDate(date);
+        return WEEKEND.contains(date.getDayOfWeek());
     }
 
     public static boolean contains(int day) {
         return INTEGER_TO_CALENDAR.containsKey(day);
+    }
+
+    private static void validateLocalDate(LocalDate date) {
+        if (date.getYear() != YEAR || date.getMonthValue() != MONTH || !contains(date.getDayOfMonth())) {
+            throw new IllegalStateException();
+        }
     }
 
     private static void validateDay(int day) {

@@ -5,11 +5,11 @@ import java.text.DecimalFormat;
 import java.util.Objects;
 
 public class Money implements Comparable<Money> {
-    public static final Money ZERO = new Money(BigDecimal.valueOf(0L)),
-            HUNDRED = new Money(BigDecimal.valueOf(100L)),
-            THOUSAND = new Money(BigDecimal.valueOf(1_000L)),
-            YEAR_AMOUNT = new Money(BigDecimal.valueOf(2_023L)),
-            TEN_THOUSAND = new Money(BigDecimal.valueOf(10_000L));
+    public static final Money ZERO = new Money(0L),
+            HUNDRED = new Money(100L),
+            THOUSAND = new Money(1_000L),
+            YEAR_AMOUNT = new Money(2_023L),
+            TEN_THOUSAND = new Money(10_000L);
     private final BigDecimal amount;
 
     private Money(BigDecimal amount) {
@@ -32,14 +32,6 @@ public class Money implements Comparable<Money> {
 
     public Money negative() {
         return multiply(-1L);
-    }
-
-    public boolean isNegative() {
-        return compareTo(Money.ZERO) < 0;
-    }
-
-    public boolean isPositive() {
-        return compareTo(Money.ZERO) > 0;
     }
 
     public boolean isZero() {
