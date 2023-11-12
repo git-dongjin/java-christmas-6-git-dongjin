@@ -25,7 +25,7 @@ public enum Present {
 
     public Money getPresentProfit() {
         Menu menu = Menu.convertStringToMenu(name);
-        return menu.multiply(count);
+        return menu.multiply(count).negative();
     }
 
     @Override
