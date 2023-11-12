@@ -60,7 +60,7 @@ public enum Menu {
         return price;
     }
 
-    public Money add(Money money) {
-        return price.add(money);
+    public Money multiply(int count) {
+        return price.multiply(count);
     }
 }

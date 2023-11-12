@@ -18,14 +18,22 @@ public enum Present {
     }
 
     public static Money getTotalProfit(List<Present> presents) {
+        validateNotDuplicate(presents);
+
         Money profit = Money.ZERO;
 
         for(Present present : presents) {
             Menu menu = Menu.convertStringToMenu(present.name);
-            profit = menu.add(profit).multiply(present.count);
+            profit = profit.add(menu.multiply(present.count));
         }
 
         return profit;
+    }
+
+    private static void validateNotDuplicate(List<Present> presents) {
+        if (presents.size() != presents.stream().distinct().count()) {
+            throw new IllegalStateException();
+        }
     }
 
     Present(Money min, String name, int count) {
