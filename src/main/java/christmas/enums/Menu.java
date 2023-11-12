@@ -59,4 +59,8 @@ public enum Menu {
     public Money getPrice() {
         return price;
     }
+
+    public Money add(Money money) {
+        return price.add(money);
+    }
 }

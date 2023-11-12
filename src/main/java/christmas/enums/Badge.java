@@ -16,7 +16,7 @@ public enum Badge {
 
     public static Badge getBadge(ProfitTotal profitTotal) {
         return Arrays.stream(values())
-                .filter(value -> profitTotal.getTotalProfit().negative().compareTo(value.minProfit) >= 0)
+                .filter(value -> profitTotal.getTotalProfit().negative().compareTo(value.minProfit) <= 0)
                 .findFirst()
                 .orElseThrow(IllegalStateException::new);
     }

@@ -40,6 +40,8 @@ public class PromotionController {
         ExpectedTotalAfterDiscount expectedTotalAfterDiscount = new ExpectedTotalAfterDiscount(orderTotalBeforeDiscount, profitTotal);
         BadgePolicy badgePolicy = new BadgePolicy(profitTotal);
 
+        viewController.output(ordersMenuCount);
+        viewController.output(orderTotalBeforeDiscount);
         viewController.outputNewLine();
         viewController.output(presentPolicy.showPresents());
         viewController.output(profitPolicies);

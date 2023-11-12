@@ -18,13 +18,7 @@ public class Presents {
     }
 
     public Money getProfit() {
-        Money profit = Money.ZERO;
-
-        for (Present present : presents) {
-            profit = profit.add(present.getProfit());
-        }
-
-        return profit;
+        return Present.getTotalProfit(presents);
     }
 
     @Override
