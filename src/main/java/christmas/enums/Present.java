@@ -29,6 +29,6 @@ public enum Present {
 
     @Override
     public String toString() {
-        return name + " " + String.valueOf(count) + "개" + System.lineSeparator();
+        return name + " " + count + "개";
     }
 }

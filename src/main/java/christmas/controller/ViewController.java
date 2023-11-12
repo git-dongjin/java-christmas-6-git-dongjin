@@ -24,10 +24,6 @@ public class ViewController {
         return inputView.readOrdersMenuCount();
     }
 
-    public void outputNewLine() {
-        outputView.printNewLine();
-    }
-
     public void outputWelcome() {
         outputView.printWelcome();
     }

@@ -24,6 +24,7 @@ public class InputView {
                 return new Day(Parser.parseInt(input));
             } catch (IllegalArgumentException e) {
                 outputView.printReadDateError();
+                outputView.printNewLine();
             }
         }
     }
@@ -37,6 +38,7 @@ public class InputView {
                 return new OrdersMenuCount(Parser.innersSplit(inners));
             } catch (IllegalArgumentException e) {
                 outputView.printReadOrdersMenuCountError();
+                outputView.printNewLine();
             }
         }
     }
