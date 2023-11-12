@@ -30,16 +30,16 @@ public class OrdersMenuCount {
         return orderTotal;
     }
 
-    public int getDesertCount() {
+    public int getDessertCount() {
         return ordersMenuCount.keySet().stream()
-                .filter(key -> key.getCategory().equals(MenuCategory.DESSERT))
+                .filter(Menu::isDessert)
                 .mapToInt(ordersMenuCount::get)
                 .sum();
     }
 
     public int getMainCount() {
         return ordersMenuCount.keySet().stream()
-                .filter(key -> key.getCategory().equals(MenuCategory.MAIN))
+                .filter(Menu::isMain)
                 .mapToInt(ordersMenuCount::get)
                 .sum();
     }
@@ -60,7 +60,7 @@ public class OrdersMenuCount {
     }
 
     private void validateKeysContainsNotDrink(Map<Menu, Integer> ordersMenuCount) {
-        if (ordersMenuCount.keySet().stream().allMatch(key -> key.getCategory().equals(MenuCategory.DRINK))) {
+        if (ordersMenuCount.keySet().stream().allMatch(Menu::isDrink)) {
             throw new IllegalArgumentException();
         }
     }

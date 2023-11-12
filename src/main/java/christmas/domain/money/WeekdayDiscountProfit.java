@@ -20,7 +20,7 @@ public class WeekdayDiscountProfit {
     }
 
     private Money calculateProfit() {
-        int desertCount = ordersMenuCount.getDesertCount();
+        int desertCount = ordersMenuCount.getDessertCount();
         return Money.YEAR_AMOUNT.multiply(desertCount).negative();
     }
 }

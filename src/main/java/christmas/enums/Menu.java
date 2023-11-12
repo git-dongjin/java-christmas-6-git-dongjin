@@ -48,8 +48,16 @@ public enum Menu {
         this.price = price;
     }
 
-    public MenuCategory getCategory() {
-        return category;
+    public boolean isMain() {
+        return category.equals(MAIN);
+    }
+
+    public boolean isDessert() {
+        return category.equals(DESSERT);
+    }
+
+    public boolean isDrink() {
+        return category.equals(DRINK);
     }
 
     public String getName() {
