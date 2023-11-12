@@ -17,29 +17,15 @@ public enum Present {
         return Arrays.stream(values()).filter(value -> orderTotalBeforeDiscount.compareTo(value.min) >= SAME).toList();
     }
 
-    public static Money getTotalProfit(List<Present> presents) {
-        validateNotDuplicate(presents);
-
-        Money profit = Money.ZERO;
-
-        for(Present present : presents) {
-            Menu menu = Menu.convertStringToMenu(present.name);
-            profit = profit.add(menu.multiply(present.count));
-        }
-
-        return profit;
-    }
-
-    private static void validateNotDuplicate(List<Present> presents) {
-        if (presents.size() != presents.stream().distinct().count()) {
-            throw new IllegalStateException();
-        }
-    }
-
     Present(Money min, String name, int count) {
         this.min = min;
         this.name = name;
         this.count = count;
+    }
+
+    public Money getPresentProfit() {
+        Menu menu = Menu.convertStringToMenu(name);
+        return menu.multiply(count);
     }
 
     @Override

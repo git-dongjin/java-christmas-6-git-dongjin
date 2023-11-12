@@ -56,10 +56,6 @@ public enum Menu {
         return name;
     }
 
-    public Money getPrice() {
-        return price;
-    }
-
     public Money multiply(int count) {
         return price.multiply(count);
     }

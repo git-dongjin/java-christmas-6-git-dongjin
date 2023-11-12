@@ -21,10 +21,10 @@ public class OrdersMenuCount {
         Money orderTotal = Money.ZERO;
 
         for (Map.Entry<Menu, Integer> order : ordersMenuCount.entrySet()) {
-            Money price = order.getKey().getPrice();
+            Menu menu = order.getKey();
             int count = order.getValue();
 
-            orderTotal = orderTotal.add(price.multiply(count));
+            orderTotal = orderTotal.add(menu.multiply(count));
         }
 
         return orderTotal;
