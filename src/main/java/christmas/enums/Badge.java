@@ -1,16 +1,33 @@
 package christmas.enums;
 
+import christmas.domain.money.Money;
+import christmas.domain.money.ProfitTotal;
+
+import java.util.Arrays;
+
 public enum Badge {
-    SANTA("산타", 20_000),
-    TREE("트리", 10_000),
-    STAR("별", 5_000),
-    BLANK("없음", 0);
+    SANTA("산타", new Money(20_000L)),
+    TREE("트리", new Money(10_000L)),
+    STAR("별", new Money(5_000L)),
+    BLANK("없음", Money.ZERO);
 
     private final String name;
-    private final int minProfit;
+    private final Money minProfit;
 
-    Badge(String name, int minProfit) {
+    public static Badge getBadge(ProfitTotal profitTotal) {
+        return Arrays.stream(values())
+                .filter(value -> profitTotal.getTotalProfit().negative().compareTo(value.minProfit) >= 0)
+                .findFirst()
+                .orElseThrow(IllegalStateException::new);
+    }
+
+    Badge(String name, Money minProfit) {
         this.name = name;
         this.minProfit = minProfit;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
