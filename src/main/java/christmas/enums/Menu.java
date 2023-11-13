@@ -60,7 +60,7 @@ public enum Menu {
         return category.equals(DRINK);
     }
 
-    public Money multiply(int count) {
+    public Money multiply(long count) {
         return price.multiply(count);
     }
 

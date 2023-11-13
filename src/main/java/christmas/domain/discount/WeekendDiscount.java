@@ -33,7 +33,7 @@ public class WeekendDiscount implements Discount {
     }
 
     private Money calculateProfit() {
-        int mainCount = ordersMenuCount.getMainCount();
+        long mainCount = ordersMenuCount.getMainCount();
         return Money.YEAR_AMOUNT.multiply(mainCount).negative();
     }
 }

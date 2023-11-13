@@ -33,7 +33,7 @@ public class WeekdayDiscount implements Discount {
     }
 
     private Money calculateProfit() {
-        int desertCount = ordersMenuCount.getDessertCount();
+        long desertCount = ordersMenuCount.getDessertCount();
         return Money.YEAR_AMOUNT.multiply(desertCount).negative();
     }
 }

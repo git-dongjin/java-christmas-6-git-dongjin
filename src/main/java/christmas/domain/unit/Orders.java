@@ -14,7 +14,7 @@ public class Orders {
         this.orders = orders;
     }
 
-    public Map<Menu, Integer> convertListToMap() {
+    public Map<Menu, Long> convertListToMap() {
         return Order.convertListToMap(orders);
     }
 }

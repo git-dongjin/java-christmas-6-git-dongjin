@@ -19,11 +19,15 @@ public class Parser {
         return Integer.parseInt(number);
     }
 
+    public static long parseLong(String number) {
+        return Long.parseLong(number);
+    }
+
     public static List<String> outerSplit(String outer) {
         return Arrays.stream(outer.split(OUTER_DELIMITER, NO_LIMIT)).map(String::strip).toList();
     }
 
-    public static Map<Menu, Integer> innersSplit(List<String> inners) {
+    public static Map<Menu, Long> innersSplit(List<String> inners) {
         Orders orders = new Orders(inners.stream().map(Parser::innerSplit).toList());
         return orders.convertListToMap();
     }
@@ -33,7 +37,7 @@ public class Parser {
         validateNoDelimiter(index);
 
         String menu = inner.substring(0, index);
-        int count = parseInt(inner.substring(index + 1));
+        long count = parseLong(inner.substring(index + 1));
 
         return new Order(menu, count);
     }

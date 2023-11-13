@@ -9,11 +9,11 @@ import java.util.Map;
 
 public class Order {
     private final Menu menu;
-    private final int count;
+    private final long count;
 
-    public static Map<Menu, Integer> convertListToMap(List<Order> orders) {
+    public static Map<Menu, Long> convertListToMap(List<Order> orders) {
         validateMenuNotDuplicates(orders);
-        Map<Menu, Integer> orderMap = new LinkedHashMap<>();
+        Map<Menu, Long> orderMap = new LinkedHashMap<>();
 
         for (Order order : orders) {
             orderMap.put(order.menu, order.count);
@@ -34,7 +34,7 @@ public class Order {
         }
     }
 
-    public Order(String menu, int count) {
+    public Order(String menu, long count) {
         validateExistMenu(menu);
         validateNotZeroNegative(count);
         this.menu = convertStringToMenu(menu);
@@ -47,8 +47,8 @@ public class Order {
         }
     }
 
-    private void validateNotZeroNegative(int count) {
-        if (count <= 0) {
+    private void validateNotZeroNegative(long count) {
+        if (count <= 0L) {
             throw new IllegalArgumentException();
         }
     }

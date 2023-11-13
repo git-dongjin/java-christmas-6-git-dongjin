@@ -5,10 +5,10 @@ import christmas.enums.Menu;
 import java.util.Map;
 
 public class OrdersMenuCount {
-    private static final int MAX_TOTAL_COUNT = 20;
-    private final Map<Menu, Integer> ordersMenuCount;
+    private static final long MAX_TOTAL_COUNT = 20L;
+    private final Map<Menu, Long> ordersMenuCount;
 
-    public OrdersMenuCount(Map<Menu, Integer> ordersMenuCount) {
+    public OrdersMenuCount(Map<Menu, Long> ordersMenuCount) {
         validateKeysContainsNotDrink(ordersMenuCount);
         validateTotalValuesNotOverMaxTotalCount(ordersMenuCount);
 
@@ -18,9 +18,9 @@ public class OrdersMenuCount {
     public Money calculateOrderTotal() {
         Money orderTotal = Money.ZERO;
 
-        for (Map.Entry<Menu, Integer> order : ordersMenuCount.entrySet()) {
+        for (Map.Entry<Menu, Long> order : ordersMenuCount.entrySet()) {
             Menu menu = order.getKey();
-            int count = order.getValue();
+            long count = order.getValue();
 
             orderTotal = orderTotal.add(menu.multiply(count));
         }
@@ -28,17 +28,17 @@ public class OrdersMenuCount {
         return orderTotal;
     }
 
-    public int getDessertCount() {
+    public long getDessertCount() {
         return ordersMenuCount.keySet().stream()
                 .filter(Menu::isDessert)
-                .mapToInt(ordersMenuCount::get)
+                .mapToLong(ordersMenuCount::get)
                 .sum();
     }
 
-    public int getMainCount() {
+    public long getMainCount() {
         return ordersMenuCount.keySet().stream()
                 .filter(Menu::isMain)
-                .mapToInt(ordersMenuCount::get)
+                .mapToLong(ordersMenuCount::get)
                 .sum();
     }
 
@@ -46,7 +46,7 @@ public class OrdersMenuCount {
     public String toString() {
         StringBuilder ordersBuilder = new StringBuilder("<주문 메뉴>").append(System.lineSeparator());
 
-        for (Map.Entry<Menu, Integer> order : ordersMenuCount.entrySet()) {
+        for (Map.Entry<Menu, Long> order : ordersMenuCount.entrySet()) {
             ordersBuilder.append(order.getKey())
                     .append(" ")
                     .append(order.getValue())
@@ -57,14 +57,14 @@ public class OrdersMenuCount {
         return ordersBuilder.toString();
     }
 
-    private void validateKeysContainsNotDrink(Map<Menu, Integer> ordersMenuCount) {
+    private void validateKeysContainsNotDrink(Map<Menu, Long> ordersMenuCount) {
         if (ordersMenuCount.keySet().stream().allMatch(Menu::isDrink)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateTotalValuesNotOverMaxTotalCount(Map<Menu, Integer> ordersMenuCount) {
-        if (ordersMenuCount.values().stream().mapToInt(Integer::intValue).sum() > MAX_TOTAL_COUNT) {
+    private void validateTotalValuesNotOverMaxTotalCount(Map<Menu, Long> ordersMenuCount) {
+        if (ordersMenuCount.values().stream().mapToLong(Long::longValue).sum() > MAX_TOTAL_COUNT) {
             throw new IllegalArgumentException();
         }
     }
