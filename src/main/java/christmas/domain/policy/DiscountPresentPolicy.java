@@ -1,13 +1,15 @@
 package christmas.domain.policy;
 
+import christmas.domain.discount.Discounts;
+import christmas.domain.present.PresentGive;
 import christmas.domain.unit.Money;
 
-public class ProfitPresentPolicy {
-    private final PresentPolicy presentPolicy;
-    private final ProfitPolicies profitPolicies;
+public class DiscountPresentPolicy {
+    private final PresentGive presentPolicy;
+    private final Discounts profitPolicies;
     private final MinimumOrderTotalPolicy minimumOrderTotalPolicy;
 
-    public ProfitPresentPolicy(PresentPolicy presentPolicy, ProfitPolicies profitPolicies, MinimumOrderTotalPolicy minimumOrderTotalPolicy) {
+    public DiscountPresentPolicy(PresentGive presentPolicy, Discounts profitPolicies, MinimumOrderTotalPolicy minimumOrderTotalPolicy) {
         this.presentPolicy = presentPolicy;
         this.profitPolicies = profitPolicies;
         this.minimumOrderTotalPolicy = minimumOrderTotalPolicy;

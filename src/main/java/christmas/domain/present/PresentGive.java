@@ -1,8 +1,8 @@
-package christmas.domain.policy;
+package christmas.domain.present;
 
 import christmas.domain.unit.Money;
 
-public interface PresentPolicy {
+public interface PresentGive {
     String showPresents();
     Money getProfit();
 }

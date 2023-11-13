@@ -11,7 +11,6 @@ public class BadgePolicy {
 
     @Override
     public String toString() {
-        return "<12월 이벤트 배지>" + System.lineSeparator()
-                + badge;
+        return "<12월 이벤트 배지>" + System.lineSeparator() + badge;
     }
 }

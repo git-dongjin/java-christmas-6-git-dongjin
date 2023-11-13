@@ -15,7 +15,7 @@ public class PromotionController {
     private Day day;
     private OrdersMenuCount ordersMenuCount;
     private OrderTotalBeforeDiscount orderTotalBeforeDiscount;
-    private ProfitPresentPolicy profitPresentPolicy;
+    private DiscountPresentPolicy profitPresentPolicy;
     private TotalProfitPolicy totalProfitPolicy;
     private ExpectedTotalAfterDiscount expectedTotalAfterDiscount;
     private BadgePolicy badgePolicy;
@@ -26,55 +26,23 @@ public class PromotionController {
     }
 
     public void run() {
-        welcomeMessage();
+        viewController.outputWelcome();
 
-        day = inputDate();
+        day = viewController.inputDate();
 
-        ordersMenuCount = inputOrdersMenuCount();
+        ordersMenuCount = viewController.inputOrdersMenuCount();
 
-        orderTotalBeforeDiscount = getOrderTotalBeforeDiscount();
+        orderTotalBeforeDiscount = domainController.getOrderTotalBeforeDiscount(ordersMenuCount);
 
-        profitPresentPolicy = getProfitPresentPolicy();
+        profitPresentPolicy = domainController.getProfitPresentPolicy(day, ordersMenuCount, orderTotalBeforeDiscount);
 
-        totalProfitPolicy = getTotalProfitPolicy();
+        totalProfitPolicy = domainController.getTotalProfitPolicy(profitPresentPolicy);
 
-        expectedTotalAfterDiscount = getExpectedTotalAfterDiscount();
+        expectedTotalAfterDiscount = domainController.getExpectedTotalAfterDiscount(orderTotalBeforeDiscount, totalProfitPolicy);
 
-        badgePolicy = getBadgePolicy();
+        badgePolicy = domainController.getBadgePolicy(totalProfitPolicy);
 
         showResult();
-    }
-
-    private void welcomeMessage() {
-        viewController.outputWelcome();
-    }
-
-    private Day inputDate() {
-        return viewController.inputDate();
-    }
-
-    private OrdersMenuCount inputOrdersMenuCount() {
-        return viewController.inputOrdersMenuCount();
-    }
-
-    private OrderTotalBeforeDiscount getOrderTotalBeforeDiscount() {
-        return domainController.getOrderTotalBeforeDiscount(ordersMenuCount);
-    }
-
-    private ProfitPresentPolicy getProfitPresentPolicy() {
-        return domainController.getProfitPresentPolicy(day, ordersMenuCount, orderTotalBeforeDiscount);
-    }
-
-    private TotalProfitPolicy getTotalProfitPolicy() {
-        return domainController.getTotalProfitPolicy(profitPresentPolicy);
-    }
-
-    private ExpectedTotalAfterDiscount getExpectedTotalAfterDiscount() {
-        return domainController.getExpectedTotalAfterDiscount(orderTotalBeforeDiscount, totalProfitPolicy);
-    }
-
-    private BadgePolicy getBadgePolicy() {
-        return domainController.getBadgePolicy(totalProfitPolicy);
     }
 
     private void showResult() {

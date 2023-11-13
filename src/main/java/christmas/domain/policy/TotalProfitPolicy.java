@@ -3,9 +3,9 @@ package christmas.domain.policy;
 import christmas.domain.unit.Money;
 
 public class TotalProfitPolicy {
-    private final ProfitPresentPolicy profitPresentPolicy;
+    private final DiscountPresentPolicy profitPresentPolicy;
 
-    public TotalProfitPolicy(ProfitPresentPolicy profitPresentPolicy) {
+    public TotalProfitPolicy(DiscountPresentPolicy profitPresentPolicy) {
         this.profitPresentPolicy = profitPresentPolicy;
     }
 
