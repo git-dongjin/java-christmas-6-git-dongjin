@@ -1,12 +1,10 @@
 package christmas.domain.unit;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.mockito.Mockito.mock;
 
 class DayTest {
     private static final String LINE_SEPARATOR = System.lineSeparator();
