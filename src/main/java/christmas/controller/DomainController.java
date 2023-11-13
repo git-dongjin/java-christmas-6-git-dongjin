@@ -3,11 +3,10 @@ package christmas.controller;
 import christmas.domain.unit.Day;
 import christmas.domain.total.ExpectedTotalAfterDiscount;
 import christmas.domain.total.OrderTotalBeforeDiscount;
-import christmas.domain.profit.TotalProfit;
+import christmas.domain.policy.TotalProfitPolicy;
 import christmas.domain.unit.OrdersMenuCount;
 import christmas.domain.policy.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DomainController {
@@ -16,39 +15,30 @@ public class DomainController {
         return new OrderTotalBeforeDiscount(ordersMenuCount);
     }
 
-    public PresentPolicy getPresentPolicy(Day day, OrderTotalBeforeDiscount orderTotalBeforeDiscount) {
-        return new PresentMenuPolicy(day, orderTotalBeforeDiscount);
+    public ProfitPresentPolicy getProfitPresentPolicy(Day day, OrdersMenuCount ordersMenuCount, OrderTotalBeforeDiscount orderTotalBeforeDiscount) {
+        PresentPolicy presentPolicy = new PresentMenuPolicy(day, orderTotalBeforeDiscount);
+
+        ChristmasDiscountPolicy christmasDiscountPolicy = new ChristmasDiscountPolicy(day);
+        WeekdayDiscountPolicy weekdayDiscountPolicy = new WeekdayDiscountPolicy(day, ordersMenuCount);
+        WeekendDiscountPolicy weekendDiscountPolicy = new WeekendDiscountPolicy(day, ordersMenuCount);
+        SpecialDiscountPolicy specialDiscountPolicy = new SpecialDiscountPolicy(day);
+        List<ProfitPolicy> profitPoliciesList = List.of(christmasDiscountPolicy, weekdayDiscountPolicy, weekendDiscountPolicy, specialDiscountPolicy);
+        ProfitPolicies profitPolicies = new ProfitPolicies(List.copyOf(profitPoliciesList));
+
+        MinimumOrderTotalPolicy minimumOrderTotalPolicy = new MinimumOrderTotalPolicy(orderTotalBeforeDiscount);
+
+        return new ProfitPresentPolicy(presentPolicy, profitPolicies, minimumOrderTotalPolicy);
     }
 
-    public ProfitPolicies getProfitPolicies(Day day, OrdersMenuCount ordersMenuCount, OrderTotalBeforeDiscount orderTotalBeforeDiscount) {
-        List<ProfitPolicy> profitPoliciesList = new ArrayList<>();
-        MinimumOrderTotalPolicy minimumOrderTotalPolicy = getMinimumOrderTotalPolicy(orderTotalBeforeDiscount);
-        if (!minimumOrderTotalPolicy.isEventAvailable()) {
-            return new ProfitPolicies(profitPoliciesList);
-        }
-
-        profitPoliciesList.add(new ChristmasDiscountPolicy(day));
-        profitPoliciesList.add(new WeekdayDiscountPolicy(day, ordersMenuCount));
-        profitPoliciesList.add(new WeekendDiscountPolicy(day, ordersMenuCount));
-        profitPoliciesList.add(new SpecialDiscountPolicy(day));
-        profitPoliciesList.add(new PresentMenuPolicy(day, orderTotalBeforeDiscount));
-
-        return new ProfitPolicies(profitPoliciesList);
+    public TotalProfitPolicy getTotalProfitPolicy(ProfitPresentPolicy profitPresentPolicy) {
+        return new TotalProfitPolicy(profitPresentPolicy);
     }
 
-    public TotalProfit getProfitTotal(ProfitPolicies profitPolicies) {
-        return new TotalProfit(profitPolicies);
-    }
-
-    private MinimumOrderTotalPolicy getMinimumOrderTotalPolicy(OrderTotalBeforeDiscount orderTotalBeforeDiscount) {
-        return new MinimumOrderTotalPolicy(orderTotalBeforeDiscount);
-    }
-
-    public ExpectedTotalAfterDiscount getExpectedTotalAfterDiscount(OrderTotalBeforeDiscount orderTotalBeforeDiscount, TotalProfit profitTotal) {
+    public ExpectedTotalAfterDiscount getExpectedTotalAfterDiscount(OrderTotalBeforeDiscount orderTotalBeforeDiscount, TotalProfitPolicy profitTotal) {
         return new ExpectedTotalAfterDiscount(orderTotalBeforeDiscount, profitTotal);
     }
 
-    public BadgePolicy getBadgePolicy(TotalProfit profitTotal) {
+    public BadgePolicy getBadgePolicy(TotalProfitPolicy profitTotal) {
         return new BadgePolicy(profitTotal);
     }
 }

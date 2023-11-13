@@ -1,7 +1,7 @@
 package christmas.enums;
 
 import christmas.domain.unit.Money;
-import christmas.domain.profit.TotalProfit;
+import christmas.domain.policy.TotalProfitPolicy;
 
 import java.util.Arrays;
 
@@ -14,7 +14,7 @@ public enum Badge {
     private final String name;
     private final Money minProfit;
 
-    public static Badge getBadge(TotalProfit profitTotal) {
+    public static Badge getBadge(TotalProfitPolicy profitTotal) {
         return Arrays.stream(values())
                 .filter(value -> profitTotal.getTotalProfit().negative().notLessThan(value.minProfit))
                 .findFirst()

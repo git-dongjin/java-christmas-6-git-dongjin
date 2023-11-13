@@ -1,5 +1,7 @@
 package christmas.domain.policy;
 
+import christmas.domain.unit.Money;
+
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,8 +13,14 @@ public class ProfitPolicies implements Iterable<ProfitPolicy> {
         this.profitPolicies = profitPolicies.stream().filter(value -> !value.getProfit().isZero()).toList();
     }
 
-    public ProfitPolicies getProfitPoliciesExceptPresentPolicies() {
-        return new ProfitPolicies(profitPolicies.stream().filter(value -> !(value instanceof PresentPolicy)).toList());
+    public Money getTotalProfit() {
+        Money totalProfit = Money.ZERO;
+
+        for(ProfitPolicy profitPolicy : profitPolicies) {
+            totalProfit = totalProfit.add(profitPolicy.getProfit());
+        }
+
+        return totalProfit;
     }
 
     private void validateNotDuplicateClasses(List<ProfitPolicy> profitPolicies) {
@@ -23,7 +31,7 @@ public class ProfitPolicies implements Iterable<ProfitPolicy> {
 
     @Override
     public String toString() {
-        StringBuilder profitBuilder = new StringBuilder("<혜택 내역>").append(System.lineSeparator());
+        StringBuilder profitBuilder = new StringBuilder();
 
         if (profitPolicies.isEmpty()) {
             profitBuilder.append("없음").append(System.lineSeparator());

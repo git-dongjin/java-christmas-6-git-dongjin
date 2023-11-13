@@ -10,7 +10,7 @@ import christmas.enums.Present;
 
 import java.util.List;
 
-public class PresentMenuPolicy implements ProfitPolicy, PresentPolicy {
+public class PresentMenuPolicy implements PresentPolicy {
     private final Presents presents;
     private final PresentGiveProfit presentProfit;
 
@@ -40,6 +40,6 @@ public class PresentMenuPolicy implements ProfitPolicy, PresentPolicy {
             return "";
         }
 
-        return "증정 이벤트: " + profit + "원";
+        return "증정 이벤트: " + profit + "원" + System.lineSeparator();
     }
 }

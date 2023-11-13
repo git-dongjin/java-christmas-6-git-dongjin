@@ -28,7 +28,7 @@ public class Presents {
 
     @Override
     public String toString() {
-        StringBuilder presentsBuilder = new StringBuilder("<증정 메뉴>").append(System.lineSeparator());
+        StringBuilder presentsBuilder = new StringBuilder();
 
         if (presents.isEmpty()) {
             return presentsBuilder.append("없음").append(System.lineSeparator()).toString();
