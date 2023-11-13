@@ -6,8 +6,8 @@ import christmas.domain.unit.Money;
 public class ExpectedTotalAfterDiscount {
     private final Money expectedTotal;
 
-    public ExpectedTotalAfterDiscount(OrderTotalBeforeDiscount orderTotalBeforeDiscount, TotalProfitPolicy profitTotal) {
-        this.expectedTotal = orderTotalBeforeDiscount.calculateExpectedTotal(profitTotal);
+    public ExpectedTotalAfterDiscount(OrderTotalBeforeDiscount orderTotalBeforeDiscount, TotalProfitPolicy totalProfitPolicy) {
+        this.expectedTotal = orderTotalBeforeDiscount.calculateExpectedTotal(totalProfitPolicy);
     }
 
     @Override
