@@ -10,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 class WeekdayDiscountTest {
+    private static final long DESSERT_COUNT = 2L;
     private static final Money NO_PROFIT = Money.ZERO,
             WEEKDAY_DISCOUNT_PROFIT = new Money(-4_046L);
     private static final String WEEKDAY_DISCOUNT_STRING = "평일 할인: -4,046원";
@@ -81,7 +82,7 @@ class WeekdayDiscountTest {
     private void setMock(boolean eventPeriod, boolean weekday) {
         when(weekdayDiscountPeriod.isEventPeriod()).thenReturn(eventPeriod);
         when(weekdayDiscountPeriod.isWeekday()).thenReturn(weekday);
-        when(ordersMenuCount.getDessertCount()).thenReturn(2L);
+        when(ordersMenuCount.getDessertCount()).thenReturn(DESSERT_COUNT);
 
     }
 
