@@ -38,7 +38,7 @@ public enum Menu {
 
     private static void validateName(String name) {
         if (!contains(name)) {
-            throw new IllegalArgumentException();
+            throw new IllegalStateException();
         }
     }
 
