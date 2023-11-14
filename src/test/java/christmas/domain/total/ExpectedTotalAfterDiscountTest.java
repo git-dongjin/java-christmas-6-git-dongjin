@@ -21,6 +21,7 @@ class ExpectedTotalAfterDiscountTest {
         totalProfitPolicy = mock(TotalProfitPolicy.class);
         when(orderTotalBeforeDiscount.calculateExpectedTotal(totalProfitPolicy))
                 .thenReturn(new Money(135_754L));
+
         expectedTotalAfterDiscount = new ExpectedTotalAfterDiscount(orderTotalBeforeDiscount, totalProfitPolicy);
     }
 

@@ -15,8 +15,8 @@ public class OrderTotalBeforeDiscount {
         return orderTotal.notLessThan(minimumOrderTotal);
     }
 
-    public Money calculateExpectedTotal(TotalProfitPolicy profitTotal) {
-        return orderTotal.add(profitTotal.getTotalProfitExceptPresent());
+    public Money calculateExpectedTotal(TotalProfitPolicy totalProfitPolicy) {
+        return orderTotal.add(totalProfitPolicy.getTotalProfitExceptPresent());
     }
 
     public boolean notLessThan(Money other) {
