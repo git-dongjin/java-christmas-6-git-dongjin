@@ -5,18 +5,19 @@ import christmas.domain.unit.Money;
 import christmas.domain.unit.OrdersMenuCount;
 
 public class WeekdayDiscount implements Discount {
-    private final WeekdayDiscountPeriod weekdayDiscountDay;
+    private static final Money NO_PROFIT = Money.ZERO;
+    private final WeekdayDiscountPeriod weekdayDiscountPeriod;
     private final OrdersMenuCount ordersMenuCount;
 
-    public WeekdayDiscount(WeekdayDiscountPeriod weekdayDiscountDay, OrdersMenuCount ordersMenuCount) {
-        this.weekdayDiscountDay = weekdayDiscountDay;
+    public WeekdayDiscount(WeekdayDiscountPeriod weekdayDiscountPeriod, OrdersMenuCount ordersMenuCount) {
+        this.weekdayDiscountPeriod = weekdayDiscountPeriod;
         this.ordersMenuCount = ordersMenuCount;
     }
 
     @Override
     public Money getProfit() {
-        if (!weekdayDiscountDay.isEventPeriod() || !weekdayDiscountDay.isWeekday()) {
-            return Money.ZERO;
+        if (!weekdayDiscountPeriod.isEventPeriod() || !weekdayDiscountPeriod.isWeekday()) {
+            return NO_PROFIT;
         }
         return calculateProfit();
     }
@@ -25,7 +26,7 @@ public class WeekdayDiscount implements Discount {
     public String toString() {
         Money profit = getProfit();
 
-        if (profit.isZero()) {
+        if (profit.equals(NO_PROFIT)) {
             return "";
         }
 

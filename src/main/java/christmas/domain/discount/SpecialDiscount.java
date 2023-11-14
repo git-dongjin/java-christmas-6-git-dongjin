@@ -24,7 +24,7 @@ public class SpecialDiscount implements Discount {
     public String toString() {
         Money profit = getProfit();
 
-        if (profit.isZero()) {
+        if (profit.equals(NO_PROFIT)) {
             return "";
         }
 
