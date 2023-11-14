@@ -21,7 +21,7 @@ class ConsoleReaderTest {
     void readLine() {
         String expected = "크리스마스 프로모션";
 
-        try(MockedStatic<Console> mockedStatic = mockStatic(Console.class);) {
+        try(MockedStatic<Console> mockedStatic = mockStatic(Console.class)) {
             when(Console.readLine()).thenReturn(expected);
 
             assertThat(consoleReader.readLine()).isEqualTo(expected);
