@@ -49,7 +49,7 @@ class OrderTotalBeforeDiscountTest {
     @Test
     void calculateExpectedTotal() {
         totalProfitPolicy = mock(TotalProfitPolicy.class);
-        when(totalProfitPolicy.getTotalProfitExceptPresent()).thenReturn(TOTAL_PROFIT_EXCEPT_PRESENT);
+        when(totalProfitPolicy.getDiscountsProfit()).thenReturn(TOTAL_PROFIT_EXCEPT_PRESENT);
 
         assertThat(orderTotalBeforeDiscount.calculateExpectedTotal(totalProfitPolicy)).isEqualTo(EXPECTED_TOTAL);
     }

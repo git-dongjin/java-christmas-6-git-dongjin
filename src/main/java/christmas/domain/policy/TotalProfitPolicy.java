@@ -3,18 +3,18 @@ package christmas.domain.policy;
 import christmas.domain.unit.Money;
 
 public class TotalProfitPolicy {
-    private final DiscountPresentPolicy profitPresentPolicy;
+    private final DiscountPresentPolicy discountPresentPolicy;
 
-    public TotalProfitPolicy(DiscountPresentPolicy profitPresentPolicy) {
-        this.profitPresentPolicy = profitPresentPolicy;
+    public TotalProfitPolicy(DiscountPresentPolicy discountPresentPolicy) {
+        this.discountPresentPolicy = discountPresentPolicy;
     }
 
     public Money getTotalProfit() {
-        return profitPresentPolicy.getTotalProfit();
+        return discountPresentPolicy.getTotalProfit();
     }
 
-    public Money getTotalProfitExceptPresent() {
-        return profitPresentPolicy.getDiscountsProfit();
+    public Money getDiscountsProfit() {
+        return discountPresentPolicy.getDiscountsProfit();
     }
 
     @Override
