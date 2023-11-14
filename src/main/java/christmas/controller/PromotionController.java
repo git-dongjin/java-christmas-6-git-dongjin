@@ -40,7 +40,7 @@ public class PromotionController {
 
         expectedTotalAfterDiscount = domainController.getExpectedTotalAfterDiscount(orderTotalBeforeDiscount, totalProfitPolicy);
 
-        badgePolicy = domainController.getBadgePolicy(totalProfitPolicy);
+        badgePolicy = domainController.getBadgePolicy(day, totalProfitPolicy);
 
         showResult();
     }
