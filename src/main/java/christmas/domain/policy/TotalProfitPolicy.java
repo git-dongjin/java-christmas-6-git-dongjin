@@ -14,7 +14,7 @@ public class TotalProfitPolicy {
     }
 
     public Money getTotalProfitExceptPresent() {
-        return profitPresentPolicy.getTotalProfitExceptPresent();
+        return profitPresentPolicy.getDiscountsProfit();
     }
 
     @Override

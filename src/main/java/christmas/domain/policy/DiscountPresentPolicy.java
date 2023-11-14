@@ -23,7 +23,7 @@ public class DiscountPresentPolicy {
         return discounts.getTotalProfit().add(presentGive.getProfit());
     }
 
-    public Money getTotalProfitExceptPresent() {
+    public Money getDiscountsProfit() {
         if (!minimumOrderTotalPolicy.isEventAvailable()) {
             return NO_PROFIT;
         }
