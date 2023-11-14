@@ -59,10 +59,9 @@ class PresentsTest {
 
     @Test
     void testToString_증정없음() {
-        String expected = "없음" + LINE_SEPARATOR;
         presents = new Presents(PRESENTS_EMPTY);
 
-        assertThat(presents.toString()).isEqualTo(expected);
+        assertThat(presents.toString()).isEmpty();
     }
 
     @Test

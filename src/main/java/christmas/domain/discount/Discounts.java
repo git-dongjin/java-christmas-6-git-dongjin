@@ -6,15 +6,16 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Discounts implements Iterable<Discount> {
+    private static final Money NO_PROFIT = Money.ZERO;
     private final List<Discount> discountProfits;
 
     public Discounts(List<Discount> profitPolicies) {
         validateNotDuplicateClasses(profitPolicies);
-        this.discountProfits = profitPolicies.stream().filter(value -> !value.getProfit().isZero()).toList();
+        this.discountProfits = profitPolicies.stream().filter(value -> !value.getProfit().equals(NO_PROFIT)).toList();
     }
 
     public Money getTotalProfit() {
-        Money totalProfit = Money.ZERO;
+        Money totalProfit = NO_PROFIT;
 
         for(Discount discountProfit : discountProfits) {
             totalProfit = totalProfit.add(discountProfit.getProfit());
@@ -25,12 +26,11 @@ public class Discounts implements Iterable<Discount> {
 
     @Override
     public String toString() {
-        StringBuilder profitBuilder = new StringBuilder();
-
         if (discountProfits.isEmpty()) {
-            profitBuilder.append("없음").append(System.lineSeparator());
-            return profitBuilder.toString();
+            return "";
         }
+
+        StringBuilder profitBuilder = new StringBuilder();
 
         for(Discount profitPolicy : discountProfits) {
             profitBuilder.append(profitPolicy).append(System.lineSeparator());

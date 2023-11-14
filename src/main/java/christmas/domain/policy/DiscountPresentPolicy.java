@@ -33,7 +33,9 @@ public class DiscountPresentPolicy {
     public String presentsDetails() {
         StringBuilder presentsDetailsBuilder = new StringBuilder("<증정 메뉴>").append(System.lineSeparator());
 
-        if (!minimumOrderTotalPolicy.isEventAvailable()) {
+        Money presentsProfit = presentGive.getProfit();
+
+        if (!minimumOrderTotalPolicy.isEventAvailable() || presentsProfit.equals(NO_PROFIT)) {
             return presentsDetailsBuilder.append("없음").append(System.lineSeparator()).toString();
         }
 
@@ -44,6 +46,12 @@ public class DiscountPresentPolicy {
         StringBuilder profitDetailsBuilder = new StringBuilder("<혜택 내역>").append(System.lineSeparator());
 
         if (!minimumOrderTotalPolicy.isEventAvailable()) {
+            return profitDetailsBuilder.append("없음").append(System.lineSeparator()).toString();
+        }
+
+        Money totalProfit = discounts.getTotalProfit().add(presentGive.getProfit());
+
+        if (totalProfit.equals(NO_PROFIT)) {
             return profitDetailsBuilder.append("없음").append(System.lineSeparator()).toString();
         }
 

@@ -28,11 +28,11 @@ public class Presents {
 
     @Override
     public String toString() {
-        StringBuilder presentsBuilder = new StringBuilder();
-
         if (presents.isEmpty()) {
-            return presentsBuilder.append("없음").append(System.lineSeparator()).toString();
+            return "";
         }
+
+        StringBuilder presentsBuilder = new StringBuilder();
 
         for(Present present : presents) {
             presentsBuilder.append(present).append(System.lineSeparator());
