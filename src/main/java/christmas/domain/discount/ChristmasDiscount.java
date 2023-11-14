@@ -4,6 +4,7 @@ import christmas.domain.period.ChristmasDiscountPeriod;
 import christmas.domain.unit.Money;
 
 public class ChristmasDiscount implements Discount {
+    private static final Money NO_PROFIT = Money.ZERO;
     private final ChristmasDiscountPeriod christmasDiscountPeriod;
 
     public ChristmasDiscount(ChristmasDiscountPeriod christmasDiscountPeriod) {
@@ -13,7 +14,7 @@ public class ChristmasDiscount implements Discount {
     @Override
     public Money getProfit() {
         if (!christmasDiscountPeriod.isEventPeriod()) {
-            return Money.ZERO;
+            return NO_PROFIT;
         }
         return calculateProfit();
     }
@@ -22,7 +23,7 @@ public class ChristmasDiscount implements Discount {
     public String toString() {
         Money profit = getProfit();
 
-        if (profit.isZero()) {
+        if (profit.equals(NO_PROFIT)) {
             return "";
         }
 
