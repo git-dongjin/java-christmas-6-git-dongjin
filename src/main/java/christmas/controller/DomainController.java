@@ -44,8 +44,8 @@ public class DomainController {
         return new ExpectedTotalAfterDiscount(orderTotalBeforeDiscount, totalProfitPolicy);
     }
 
-    public BadgePolicy getBadgePolicy(Day day, TotalProfitPolicy profitTotal) {
-        return new BadgePolicy(day, profitTotal);
+    public BadgePolicy getBadgePolicy(Day day, TotalProfitPolicy totalProfitPolicy) {
+        return new BadgePolicy(day, totalProfitPolicy);
     }
 
     private MenuPresentGive generateMenuPresent(Day day, OrderTotalBeforeDiscount orderTotalBeforeDiscount) {
