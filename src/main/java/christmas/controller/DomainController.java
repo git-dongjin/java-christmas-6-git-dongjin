@@ -9,6 +9,8 @@ import christmas.domain.total.OrderTotalBeforeDiscount;
 import christmas.domain.policy.TotalProfitPolicy;
 import christmas.domain.unit.OrdersMenuCount;
 import christmas.domain.policy.*;
+import christmas.domain.unit.Presents;
+import christmas.enums.Present;
 
 import java.util.List;
 
@@ -48,7 +50,8 @@ public class DomainController {
 
     private MenuPresentGive generateMenuPresent(Day day, OrderTotalBeforeDiscount orderTotalBeforeDiscount) {
         MenuPresentGivePeriod presentGivePeriod = new MenuPresentGivePeriod(day);
-        return new MenuPresentGive(presentGivePeriod, orderTotalBeforeDiscount);
+        Presents presents = new Presents(Present.getPresents(orderTotalBeforeDiscount));
+        return new MenuPresentGive(presentGivePeriod, presents);
     }
 
     private ChristmasDiscount generateChristmasDiscount(Day day) {
