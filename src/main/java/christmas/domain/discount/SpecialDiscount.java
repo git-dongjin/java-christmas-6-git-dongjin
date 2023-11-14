@@ -4,18 +4,20 @@ import christmas.domain.period.SpecialDiscountPeriod;
 import christmas.domain.unit.Money;
 
 public class SpecialDiscount implements Discount {
-    private final SpecialDiscountPeriod specialDiscountDay;
+    private final static Money NO_PROFIT = Money.ZERO,
+            PROFIT = Money.THOUSAND.negative();
+    private final SpecialDiscountPeriod specialDiscountPeriod;
 
-    public SpecialDiscount(SpecialDiscountPeriod specialDiscountDay) {
-        this.specialDiscountDay = specialDiscountDay;
+    public SpecialDiscount(SpecialDiscountPeriod specialDiscountPeriod) {
+        this.specialDiscountPeriod = specialDiscountPeriod;
     }
 
     @Override
     public Money getProfit() {
-        if (!specialDiscountDay.isEventPeriod() || !specialDiscountDay.isStar()) {
-            return Money.ZERO;
+        if (!specialDiscountPeriod.isEventPeriod() || !specialDiscountPeriod.isStar()) {
+            return NO_PROFIT;
         }
-        return Money.THOUSAND.negative();
+        return PROFIT;
     }
 
     @Override
