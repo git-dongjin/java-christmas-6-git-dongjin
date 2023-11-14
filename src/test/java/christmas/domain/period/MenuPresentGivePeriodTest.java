@@ -6,25 +6,25 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
 
-class ChristmasDiscountPeriodTest {
-    private static long DAY_FROM_START = 10L;
+class MenuPresentGivePeriodTest {
     private static final Day START_DAY = Day.FIRST_DAY,
-            END_DAY = Day.CHRISTMAS;
+            END_DAY = Day.LAST_DAY;
     private Day day;
-    private ChristmasDiscountPeriod christmasDiscountPeriod;
+    private MenuPresentGivePeriod menuPresentGivePeriod;
 
     @BeforeEach
     void setUp() {
         day = mock(Day.class);
-        christmasDiscountPeriod = new ChristmasDiscountPeriod(day);
+        menuPresentGivePeriod = new MenuPresentGivePeriod(day);
     }
 
     @Test
     void isEventPeriod_이벤트기간() {
         setMock(false, false);
 
-        assertThat(christmasDiscountPeriod.isEventPeriod()).isTrue();
+        assertThat(menuPresentGivePeriod.isEventPeriod()).isTrue();
 
         verifyCalls(1, 1);
     }
@@ -33,7 +33,7 @@ class ChristmasDiscountPeriodTest {
     void isEventPeriod_이벤트기간전() {
         setMock(true, false);
 
-        assertThat(christmasDiscountPeriod.isEventPeriod()).isFalse();
+        assertThat(menuPresentGivePeriod.isEventPeriod()).isFalse();
 
         verifyCalls(1, 0);
     }
@@ -42,18 +42,9 @@ class ChristmasDiscountPeriodTest {
     void isEventPeriod_이벤트기간후() {
         setMock(false, true);
 
-        assertThat(christmasDiscountPeriod.isEventPeriod()).isFalse();
+        assertThat(menuPresentGivePeriod.isEventPeriod()).isFalse();
 
         verifyCalls(1, 1);
-    }
-
-    @Test
-    void calculateDaysFromStart() {
-        when(day.betweenFrom(START_DAY)).thenReturn(DAY_FROM_START);
-
-        assertThat(christmasDiscountPeriod.calculateDaysFromStart()).isEqualTo(DAY_FROM_START);
-
-        verify(day, times(1)).betweenFrom(START_DAY);
     }
 
     private void setMock(boolean beforeStart, boolean afterEnd) {
