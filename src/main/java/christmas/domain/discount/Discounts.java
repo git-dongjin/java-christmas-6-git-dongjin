@@ -7,17 +7,17 @@ import java.util.List;
 
 public class Discounts implements Iterable<Discount> {
     private static final Money NO_PROFIT = Money.ZERO;
-    private final List<Discount> discountProfits;
+    private final List<Discount> discounts;
 
-    public Discounts(List<Discount> profitPolicies) {
-        validateNotDuplicateClasses(profitPolicies);
-        this.discountProfits = profitPolicies.stream().filter(value -> !value.getProfit().equals(NO_PROFIT)).toList();
+    public Discounts(List<Discount> discounts) {
+        validateNotDuplicateClasses(discounts);
+        this.discounts = discounts.stream().filter(discount -> !discount.getProfit().equals(NO_PROFIT)).toList();
     }
 
     public Money getTotalProfit() {
         Money totalProfit = NO_PROFIT;
 
-        for(Discount discountProfit : discountProfits) {
+        for(Discount discountProfit : discounts) {
             totalProfit = totalProfit.add(discountProfit.getProfit());
         }
 
@@ -26,14 +26,14 @@ public class Discounts implements Iterable<Discount> {
 
     @Override
     public String toString() {
-        if (discountProfits.isEmpty()) {
+        if (discounts.isEmpty()) {
             return "";
         }
 
         StringBuilder profitBuilder = new StringBuilder();
 
-        for(Discount profitPolicy : discountProfits) {
-            profitBuilder.append(profitPolicy).append(System.lineSeparator());
+        for(Discount discount : discounts) {
+            profitBuilder.append(discount).append(System.lineSeparator());
         }
 
         return profitBuilder.toString();
@@ -41,7 +41,7 @@ public class Discounts implements Iterable<Discount> {
 
     @Override
     public Iterator<Discount> iterator() {
-        return discountProfits.iterator();
+        return discounts.iterator();
     }
 
     private void validateNotDuplicateClasses(List<Discount> profitPolicies) {
