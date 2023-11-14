@@ -9,23 +9,23 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
-class WeekdayDiscountPeriodTest {
+class WeekendDiscountPeriodTest {
     private static final Day START_DAY = Day.FIRST_DAY,
             END_DAY = Day.LAST_DAY;
     private Day day;
-    private WeekdayDiscountPeriod weekdayDiscountPeriod;
+    private WeekendDiscountPeriod weekendDiscountPeriod;
 
     @BeforeEach
     void setUp() {
         day = mock(Day.class);
-        weekdayDiscountPeriod = new WeekdayDiscountPeriod(day);
+        weekendDiscountPeriod = new WeekendDiscountPeriod(day);
     }
 
     @Test
     void isEventPeriod_이벤트기간() {
         setMock(false, false);
 
-        assertThat(weekdayDiscountPeriod.isEventPeriod()).isTrue();
+        assertThat(weekendDiscountPeriod.isEventPeriod()).isTrue();
 
         verifyCalls(1, 1);
     }
@@ -34,7 +34,7 @@ class WeekdayDiscountPeriodTest {
     void isEventPeriod_이벤트기간전() {
         setMock(true, false);
 
-        assertThat(weekdayDiscountPeriod.isEventPeriod()).isFalse();
+        assertThat(weekendDiscountPeriod.isEventPeriod()).isFalse();
 
         verifyCalls(1, 0);
     }
@@ -43,19 +43,19 @@ class WeekdayDiscountPeriodTest {
     void isEventPeriod_이벤트기간후() {
         setMock(false, true);
 
-        assertThat(weekdayDiscountPeriod.isEventPeriod()).isFalse();
+        assertThat(weekendDiscountPeriod.isEventPeriod()).isFalse();
 
         verifyCalls(1, 1);
     }
 
     @ParameterizedTest
     @ValueSource(booleans = {true, false})
-    void isWeekday(boolean expected) {
-        when(day.isWeekday()).thenReturn(expected);
+    void isWeekend(boolean expected) {
+        when(day.isWeekend()).thenReturn(expected);
 
-        assertThat(weekdayDiscountPeriod.isWeekday()).isEqualTo(expected);
+        assertThat(weekendDiscountPeriod.isWeekend()).isEqualTo(expected);
 
-        verify(day, times(1)).isWeekday();
+        verify(day, times(1)).isWeekend();
     }
 
     private void setMock(boolean beforeStart, boolean afterEnd) {
