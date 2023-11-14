@@ -62,9 +62,4 @@ public enum Calendar {
         this.day = day;
         this.star = star;
     }
-
-    @Override
-    public String toString() {
-        return String.valueOf(MONTH) + "월 " + String.valueOf(day) + "일";
-    }
 }
