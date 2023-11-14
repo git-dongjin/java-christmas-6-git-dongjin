@@ -1,5 +1,6 @@
 package christmas.domain.unit;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -8,7 +9,7 @@ import static org.assertj.core.api.Assertions.*;
 
 class DayTest {
     private static final String LINE_SEPARATOR = System.lineSeparator();
-    private static final int DAY = 3;
+    private static final int MONTH = 12, DAY = 3;
     private Day day;
 
     @ParameterizedTest
@@ -68,6 +69,14 @@ class DayTest {
     void isWeekend(int day, boolean expected) {
         this.day = new Day(day);
         assertThat(this.day.isWeekend()).isEqualTo(expected);
+    }
+
+    @Test
+    void month() {
+        day = new Day(DAY);
+        String expected = MONTH + "월";
+
+        assertThat(day.month()).isEqualTo(expected);
     }
 
     @ParameterizedTest

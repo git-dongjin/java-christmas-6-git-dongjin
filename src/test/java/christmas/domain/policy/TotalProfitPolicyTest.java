@@ -34,7 +34,7 @@ class TotalProfitPolicyTest {
     void getDiscountsProfit() {
         when(discountPresentPolicy.getDiscountsProfit()).thenReturn(DISCOUNTS_PROFIT);
 
-        assertThat(discountPresentPolicy.getDiscountsProfit()).isEqualTo(DISCOUNTS_PROFIT);
+        assertThat(totalProfitPolicy.getDiscountsProfit()).isEqualTo(DISCOUNTS_PROFIT);
 
         verify(discountPresentPolicy, times(1)).getDiscountsProfit();
     }
