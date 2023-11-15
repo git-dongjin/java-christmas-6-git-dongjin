@@ -68,7 +68,7 @@
 **christmas**  
 * Application  
 프로그램의 시작점  
-Reader와 Writer 객체를 생성하고 PromotionController에 주입해서 크리스마스 프로모션 프로그램을 실행한다.
+Reader와 Writer 객체를 생성하고 PromotionController에 주입해서 크리스마스 프로모션 프로그램을 실행
   
 <br/>  
 
@@ -76,93 +76,132 @@ Reader와 Writer 객체를 생성하고 PromotionController에 주입해서 크�
 unit  
 * Day  
 날짜를 저장하는 클래스  
-프로그램에서 사용되는 모든 날짜 연산은 Day 클래스를 통해서 구현된다.  
+프로그램에서 사용되는 모든 날짜 연산은 Day 클래스를 통해서 구현  
 * Money  
 화폐를 저장하는 클래스  
-프로그램에서 사용되는 모든 돈 연산은 Money 클래스를 통해서 구현된다.  
+프로그램에서 사용되는 모든 돈 연산은 Money 클래스를 통해서 구현  
 * Order  
-사용자가 주문한 메뉴와 개수 쌍 1개를 저장하는 클래스  
+사용자가 주문한 메뉴, 개수 쌍 1개를 저장하는 클래스  
 * Orders  
 Order의 리스트를 저장하는 클래스  
-중복 여부를 계산하고 List를 Map으로 변환하는 메서드를 갖고있다.  
+중복 여부를 계산하고 List를 Map으로 변환 
 * OrdersMenuCount  
 사용자의 주문 목록을 저장하는 클래스  
-필드에 Map을 갖고있으며 실행 과정에서 Order - Orders - OrdersMenuCount 순서로 변환된다.  
+필드에 Map을 갖고있으며 실행 과정에서 Order - Orders - OrdersMenuCount 순서로 변환  
 * Presents  
 사용자가 증정받을 메뉴의 리스트를 저장하는 클래스  
-증정 메뉴 목록을 출력하고 혜택 금액을 계산하는 메서드를 갖고있다.
+증정 메뉴 목록을 출력하고 혜택 금액을 계산  
 
 period  
 * ChristmasDiscountPeriod  
 크리스마스 할인 혜택 기간에 해당되는 클래스  
-Day를 필드로 갖고있으며 유효한 날짜인지 검사한다.
+Day를 필드로 갖고있으며 유효한 날짜인지 검사
 * MenuPresentGivePeriod  
 메뉴 증정 혜택 기간에 해당되는 클래스  
-Day를 필드로 갖고있으며 유효한 날짜인지 검사한다.
+Day를 필드로 갖고있으며 유효한 날짜인지 검사
 * SpecialDiscountPeriod  
 특별 할인 혜택 기간에 해당되는 클래스  
-Day를 필드로 갖고있으며 유효한 날짜인지 검사한다.
+Day를 필드로 갖고있으며 유효한 날짜인지 검사
 * WeekdayDiscountPeriod  
 평일 할인 혜택 기간에 해당되는 클래스  
-Day를 필드로 갖고있으며 유효한 날짜인지 검사한다.
+Day를 필드로 갖고있으며 유효한 날짜인지 검사
 * WeekendDiscountPeriod  
 주말 할인 혜택 기간에 해당되는 클래스  
-Day를 필드로 갖고있으며 유효한 날짜인지 검사한다.
+Day를 필드로 갖고있으며 유효한 날짜인지 검사
 
 discount  
 * Discount  
-할인 혜택
+할인 혜택을 추상화 한 인터페이스  
 * Discounts  
+할인 혜택 리스트를 저장하는 클래스  
 * ChristmasDiscount  
+크리스마스 할인 혜택을 계산하고 출력하는 클래스  
 * SpecialDiscount  
+특별 할인 혜택을 계산하고 출력하는 클래스  
 * WeekdayDiscount  
+평일 할인 혜택을 계산하고 출력하는 클래스  
 * WeekendDiscount  
+주말 할인 혜택을 계산하고 출력하는 클래스  
 
 present  
 * PresentGive  
+증정 혜택을 추상화 한 인터페이스
 * MenuPresentGive  
+메뉴 증정 혜택을 구체화한 클래스  
+PresentGive 인터페이스를 구현
 
 policy  
 * BadgePolicy  
+이벤트 배지 발급을 관리하는 클래스  
+총 혜택 금액에 따라 배지를 발급
 * DiscountPresentPolicy  
+할인 증정 혜택을 관리하는 클래스  
+총 결제 금액, 날짜, 최소 주문 금액 정책에 따라 할인 정책과 증정 정책을 결정
 * MinimumOrderTotalPolicy  
+최소 주문 금액을 관리하는 클래스  
+총 결제 금액과 최소 주문 금액을 비교하여 혜택이 유효한지 결정
 * TotalProfitPolicy  
+총 혜택 금액을 관리하는 클래스  
+할인 증정 정책에 따라 총 혜택 금액을 계산
 
 total  
-* ExpectedTotalAfterDiscount  
 * OrderTotalBeforeDiscount  
+할인 전 총주문 금액을 저장하는 클래스
+* ExpectedTotalAfterDiscount  
+할인 후 예상 결제 금액을 저장하는 클래스  
+할인 전 총 주문 금액과 총 혜택 정책에 따라 예상 결제 금액을 계산
   
 <br/>  
 
 **christmas.controller**  
 * PromotionController  
+전체적인 프로그램 진행을 관리하는 클래스  
 * DomainController  
+domain 패키지를 관리하는 클래스
 * ViewController  
+view 패키지를 관리하는 클래스
   
 <br/>  
 
 **christmas.view**  
 input  
 * Reader, ConsoleReader  
+프로그램에서 입력 기능을 담당하는 클래스  
+Reader 인터페이스를 Console API를 사용해 ConsoleReader로 구현
 * InputView  
+입력 기능을 조절하는 클래스
 
 output  
 * Writer, StdoutWriter  
-* OutputView
+프로그램에서 출력 기능을 담당하는 클래스  
+Writer 인터페이스를 표준 출력을 사용해 StdoutWriter로 구현  
+* OutputView  
+출력 기능을 조절하는 클래스
 
 <br/>  
 
 **christmas.enums**  
 * Badge  
+12월 이벤트 배지를 구현한 enum 객체  
+배지의 이름과 최소 혜택 금액을 저장
 * Calander  
+2023년 12월 날짜를 구현한 enum 객체  
+특별 할인 날짜, 요일을 저장
 * Menu  
+메뉴판을 구현한 enum 객체  
+메뉴 별 카테고리, 이름, 가격을 저장
 * MenuCategory  
+메뉴 카테고리를 구현한 enum 객체
 * Present  
+증정 메뉴를 구현한 enum 객체  
+최소 주문 금액, 증정 메뉴 이름, 개수를 저장
   
 <br/>  
 
 **christmas.util**  
 * Parser  
+전달받은 객체를 원하는 형태로 변환하는 클래스  
+문자열을 숫자로, 구분자를 사용해 문자열을 분할하는 기능을 담당  
 
 * * * * *  
 
