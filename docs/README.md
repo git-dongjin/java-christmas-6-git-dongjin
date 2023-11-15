@@ -75,21 +75,43 @@ Reader와 Writer 객체를 생성하고 PromotionController에 주입해서 크�
 **christmas.domain**  
 unit  
 * Day  
+날짜를 저장하는 클래스  
+프로그램에서 사용되는 모든 날짜 연산은 Day 클래스를 통해서 구현된다.  
 * Money  
+화폐를 저장하는 클래스  
+프로그램에서 사용되는 모든 돈 연산은 Money 클래스를 통해서 구현된다.  
 * Order  
+사용자가 주문한 메뉴와 개수 쌍 1개를 저장하는 클래스  
 * Orders  
+Order의 리스트를 저장하는 클래스  
+중복 여부를 계산하고 List를 Map으로 변환하는 메서드를 갖고있다.  
 * OrdersMenuCount  
+사용자의 주문 목록을 저장하는 클래스  
+필드에 Map을 갖고있으며 실행 과정에서 Order - Orders - OrdersMenuCount 순서로 변환된다.  
 * Presents  
+사용자가 증정받을 메뉴의 리스트를 저장하는 클래스  
+증정 메뉴 목록을 출력하고 혜택 금액을 계산하는 메서드를 갖고있다.
 
 period  
 * ChristmasDiscountPeriod  
+크리스마스 할인 혜택 기간에 해당되는 클래스  
+Day를 필드로 갖고있으며 유효한 날짜인지 검사한다.
 * MenuPresentGivePeriod  
+메뉴 증정 혜택 기간에 해당되는 클래스  
+Day를 필드로 갖고있으며 유효한 날짜인지 검사한다.
 * SpecialDiscountPeriod  
+특별 할인 혜택 기간에 해당되는 클래스  
+Day를 필드로 갖고있으며 유효한 날짜인지 검사한다.
 * WeekdayDiscountPeriod  
+평일 할인 혜택 기간에 해당되는 클래스  
+Day를 필드로 갖고있으며 유효한 날짜인지 검사한다.
 * WeekendDiscountPeriod  
+주말 할인 혜택 기간에 해당되는 클래스  
+Day를 필드로 갖고있으며 유효한 날짜인지 검사한다.
 
 discount  
 * Discount  
+할인 혜택
 * Discounts  
 * ChristmasDiscount  
 * SpecialDiscount  
