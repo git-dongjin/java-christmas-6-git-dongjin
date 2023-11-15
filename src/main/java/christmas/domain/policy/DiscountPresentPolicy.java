@@ -5,6 +5,7 @@ import christmas.domain.present.PresentGive;
 import christmas.domain.unit.Money;
 
 public class DiscountPresentPolicy {
+    private static final String LINE_SEPARATOR = System.lineSeparator();
     private static final Money NO_PROFIT = Money.ZERO;
     private final PresentGive presentGive;
     private final Discounts discounts;
@@ -31,12 +32,12 @@ public class DiscountPresentPolicy {
     }
 
     public String presentsDetails() {
-        StringBuilder presentsDetailsBuilder = new StringBuilder("<증정 메뉴>").append(System.lineSeparator());
+        StringBuilder presentsDetailsBuilder = new StringBuilder("<증정 메뉴>").append(LINE_SEPARATOR);
 
         Money presentsProfit = presentGive.getProfit();
 
         if (!minimumOrderTotalPolicy.isEventAvailable() || presentsProfit.equals(NO_PROFIT)) {
-            return presentsDetailsBuilder.append("없음").append(System.lineSeparator()).toString();
+            return presentsDetailsBuilder.append("없음").append(LINE_SEPARATOR).toString();
         }
 
         return presentsDetailsBuilder.append(presentGive.showPresents()).toString();

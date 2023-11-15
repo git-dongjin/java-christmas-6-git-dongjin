@@ -4,6 +4,7 @@ import christmas.domain.unit.Day;
 import christmas.enums.Badge;
 
 public class BadgePolicy {
+    private static final String LINE_SEPARATOR = System.lineSeparator();
     private final Day day;
     private final Badge badge;
 
@@ -14,6 +15,6 @@ public class BadgePolicy {
 
     @Override
     public String toString() {
-        return "<" + day.month() + " 이벤트 배지>" + System.lineSeparator() + badge + System.lineSeparator();
+        return "<" + day.month() + " 이벤트 배지>" + LINE_SEPARATOR + badge + LINE_SEPARATOR;
     }
 }

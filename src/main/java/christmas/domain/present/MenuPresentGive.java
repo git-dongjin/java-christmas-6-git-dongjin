@@ -5,6 +5,7 @@ import christmas.domain.unit.Money;
 import christmas.domain.unit.Presents;
 
 public class MenuPresentGive implements PresentGive {
+    private static final String LINE_SEPARATOR = System.lineSeparator();
     private static final Money NO_PRESENT = Money.ZERO;
     private final MenuPresentGivePeriod menuPresentGivePeriod;
     private final Presents presents;
@@ -35,6 +36,6 @@ public class MenuPresentGive implements PresentGive {
             return "";
         }
 
-        return "증정 이벤트: " + profit + "원" + System.lineSeparator();
+        return "증정 이벤트: " + profit + "원" + LINE_SEPARATOR;
     }
 }

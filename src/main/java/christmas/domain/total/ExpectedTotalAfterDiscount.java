@@ -4,6 +4,7 @@ import christmas.domain.policy.TotalProfitPolicy;
 import christmas.domain.unit.Money;
 
 public class ExpectedTotalAfterDiscount {
+    private static final String LINE_SEPARATOR = System.lineSeparator();
     private final Money expectedTotal;
 
     public ExpectedTotalAfterDiscount(OrderTotalBeforeDiscount orderTotalBeforeDiscount, TotalProfitPolicy totalProfitPolicy) {
@@ -12,7 +13,7 @@ public class ExpectedTotalAfterDiscount {
 
     @Override
     public String toString() {
-        return "<할인 후 예상 결제 금액>" + System.lineSeparator()
-                + expectedTotal + "원" + System.lineSeparator();
+        return "<할인 후 예상 결제 금액>" + LINE_SEPARATOR
+                + expectedTotal + "원" + LINE_SEPARATOR;
     }
 }

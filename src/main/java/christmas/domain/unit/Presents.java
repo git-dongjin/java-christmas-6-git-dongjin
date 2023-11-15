@@ -5,6 +5,7 @@ import christmas.enums.Present;
 import java.util.List;
 
 public class Presents {
+    private static final String LINE_SEPARATOR = System.lineSeparator();
     private final List<Present> presents;
 
     public Presents(List<Present> presents) {
@@ -35,7 +36,7 @@ public class Presents {
         StringBuilder presentsBuilder = new StringBuilder();
 
         for(Present present : presents) {
-            presentsBuilder.append(present).append(System.lineSeparator());
+            presentsBuilder.append(present).append(LINE_SEPARATOR);
         }
 
         return presentsBuilder.toString();

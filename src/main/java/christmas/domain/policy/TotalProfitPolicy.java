@@ -3,6 +3,7 @@ package christmas.domain.policy;
 import christmas.domain.unit.Money;
 
 public class TotalProfitPolicy {
+    private static final String LINE_SEPARATOR = System.lineSeparator();
     private final DiscountPresentPolicy discountPresentPolicy;
 
     public TotalProfitPolicy(DiscountPresentPolicy discountPresentPolicy) {
@@ -19,7 +20,7 @@ public class TotalProfitPolicy {
 
     @Override
     public String toString() {
-        return "<총혜택 금액>" + System.lineSeparator()
-                + getTotalProfit() + "원" + System.lineSeparator();
+        return "<총혜택 금액>" + LINE_SEPARATOR
+                + getTotalProfit() + "원" + LINE_SEPARATOR;
     }
 }

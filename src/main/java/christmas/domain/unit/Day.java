@@ -9,6 +9,7 @@ public class Day {
     public static final Day FIRST_DAY = new Day(Calendar.FIRST_DAY),
             CHRISTMAS = new Day(Calendar.CHRISTMAS_DAY),
             LAST_DAY = new Day(Calendar.LAST_DAY);
+    private static final String LINE_SEPARATOR = System.lineSeparator();
     private final LocalDate day;
 
     public Day(int day) {
@@ -46,7 +47,7 @@ public class Day {
 
     @Override
     public String toString() {
-        return month() + " " + day.getDayOfMonth() + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!" + System.lineSeparator();
+        return month() + " " + day.getDayOfMonth() + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!" + LINE_SEPARATOR;
     }
 
     private void validate(int day) {

@@ -5,6 +5,7 @@ import christmas.domain.unit.Money;
 import christmas.domain.unit.OrdersMenuCount;
 
 public class OrderTotalBeforeDiscount {
+    private static final String LINE_SEPARATOR = System.lineSeparator();
     private final Money orderTotal;
 
     public OrderTotalBeforeDiscount(OrdersMenuCount menuCount) {
@@ -25,7 +26,7 @@ public class OrderTotalBeforeDiscount {
 
     @Override
     public String toString() {
-        return "<할인 전 총주문 금액>" + System.lineSeparator()
-                + orderTotal + "원" + System.lineSeparator();
+        return "<할인 전 총주문 금액>" + LINE_SEPARATOR
+                + orderTotal + "원" + LINE_SEPARATOR;
     }
 }

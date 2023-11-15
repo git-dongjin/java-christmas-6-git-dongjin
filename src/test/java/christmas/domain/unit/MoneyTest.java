@@ -53,14 +53,6 @@ class MoneyTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"0,true", "1000,false", "-1000,false"})
-    void isZero(long amount, boolean expected) {
-        money = new Money(amount);
-
-        assertThat(money.isZero()).isEqualTo(expected);
-    }
-
-    @ParameterizedTest
     @CsvSource(value = {"-1000,true", "0, true", "100,true", "1000,true", "2000,false"})
     void notLessThan(long otherAmount, boolean expected) {
         money = new Money(AMOUNT);

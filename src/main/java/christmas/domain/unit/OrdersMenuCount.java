@@ -5,6 +5,7 @@ import christmas.enums.Menu;
 import java.util.Map;
 
 public class OrdersMenuCount {
+    private static final String LINE_SEPARATOR = System.lineSeparator();
     private static final long MAX_TOTAL_COUNT = 20L;
     private final Map<Menu, Long> ordersMenuCount;
 
@@ -44,14 +45,14 @@ public class OrdersMenuCount {
 
     @Override
     public String toString() {
-        StringBuilder ordersBuilder = new StringBuilder("<주문 메뉴>").append(System.lineSeparator());
+        StringBuilder ordersBuilder = new StringBuilder("<주문 메뉴>").append(LINE_SEPARATOR);
 
         for (Map.Entry<Menu, Long> order : ordersMenuCount.entrySet()) {
             ordersBuilder.append(order.getKey())
                     .append(" ")
                     .append(order.getValue())
                     .append("개")
-                    .append(System.lineSeparator());
+                    .append(LINE_SEPARATOR);
         }
 
         return ordersBuilder.toString();

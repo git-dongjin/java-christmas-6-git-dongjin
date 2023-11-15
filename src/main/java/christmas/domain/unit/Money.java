@@ -13,12 +13,12 @@ public class Money {
     private static final int SAME = 0;
     private final BigDecimal amount;
 
-    private Money(BigDecimal amount) {
-        this.amount = amount;
-    }
-
     public Money(long amount) {
         this.amount = BigDecimal.valueOf(amount);
+    }
+
+    private Money(BigDecimal amount) {
+        this.amount = amount;
     }
 
     public Money add(Money money) {
@@ -33,10 +33,6 @@ public class Money {
 
     public Money negative() {
         return multiply(-1L);
-    }
-
-    public boolean isZero() {
-        return this.equals(Money.ZERO);
     }
 
     public boolean notLessThan(Money other) {
