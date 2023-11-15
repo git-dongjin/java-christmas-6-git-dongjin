@@ -135,30 +135,30 @@
 * * * * *  
 
 ### 프로그래밍 요구 사항   
-- [ ] JDK17
-- [ ] 시작점: Application의 main()
-- [ ] build.gradle 수정 불가
-- [ ] JAVA 코드 컨벤션 가이드 준수
-- [ ] System.exit() 호출 금지
-- [ ] ApplicationTest 통과
-- [ ] 요구사항 없으면 파일, 패키지 이름 수정하지 않는다
-- [ ] 들여쓰기 최대 2
-- [ ] 3항 연산자를 사용하지 않는다
-- [ ] 메서드는 한 가지 일만 하도록 최대한 작게
-  - [ ] 메서드는 15라인을 넘을 수 없다
-- [ ] JUnit5와 AssertJ를 활용해서 프로그램 테스트
-  - [ ] 도메인 로직에 단위 테스트 구현
-  - [ ] UI로직은 제외
-- [ ] else 예약어를 쓰지 않는다
-- [ ] 사용자가 잘못된 값을 입력하면
-  - [ ] IllegalArgumentException 발생
-  - [ ] "[ERROR]"로 시작하는 에러 메시지 출력
-  - [ ] 예외 발생 지점부터 다시 시작
-- [ ] 명확한 유형으로 예외 처리
-  - [ ] IllegalArgumentException, IllegalStateException, ...
-- [ ] 라이브러리
-  - [ ] Console API 사용
-  - [ ] 사용자 입력: Console.readLine()
-- [ ] 입출력 클래스 구현
-  - [ ] 입력: InputView
-  - [ ] 출력: OutputView
+- [x] JDK17
+- [x] 시작점: Application의 main()
+- [x] build.gradle 수정 불가
+- [x] JAVA 코드 컨벤션 가이드 준수
+- [x] System.exit() 호출 금지
+- [x] ApplicationTest 통과
+- [x] 요구사항 없으면 파일, 패키지 이름 수정하지 않는다
+- [x] 들여쓰기 최대 2
+- [x] 3항 연산자를 사용하지 않는다
+- [x] 메서드는 한 가지 일만 하도록 최대한 작게
+  - [x] 메서드는 15라인을 넘을 수 없다
+- [x] JUnit5와 AssertJ를 활용해서 프로그램 테스트
+  - [x] 도메인 로직에 단위 테스트 구현
+  - [x] UI로직은 제외
+- [x] else 예약어를 쓰지 않는다
+- [x] 사용자가 잘못된 값을 입력하면
+  - [x] IllegalArgumentException 발생
+  - [x] "[ERROR]"로 시작하는 에러 메시지 출력
+  - [x] 예외 발생 지점부터 다시 시작
+- [x] 명확한 유형으로 예외 처리
+  - [x] IllegalArgumentException, IllegalStateException, ...
+- [x] 라이브러리
+  - [x] Console API 사용
+  - [x] 사용자 입력: Console.readLine()
+- [x] 입출력 클래스 구현
+  - [x] 입력: InputView
+  - [x] 출력: OutputView

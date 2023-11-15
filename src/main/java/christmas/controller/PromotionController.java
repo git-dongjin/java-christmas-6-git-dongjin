@@ -26,24 +26,25 @@ public class PromotionController {
     }
 
     public void run() {
-        viewController.outputWelcome();
-
-        day = viewController.inputDate();
-
-        ordersMenuCount = viewController.inputOrdersMenuCount();
-
-        orderTotalBeforeDiscount = domainController.getOrderTotalBeforeDiscount(ordersMenuCount);
-
-        profitPresentPolicy = domainController.getProfitPresentPolicy(day, ordersMenuCount, orderTotalBeforeDiscount);
-
-        totalProfitPolicy = domainController.getTotalProfitPolicy(profitPresentPolicy);
-
-        expectedTotalAfterDiscount = domainController.getExpectedTotalAfterDiscount(orderTotalBeforeDiscount, totalProfitPolicy);
-
-        badgePolicy = domainController.getBadgePolicy(day, totalProfitPolicy);
-
+        inputDayAndOrders();
+        calculateResult();
         showResult();
     }
+
+    private void inputDayAndOrders() {
+        viewController.outputWelcome();
+        day = viewController.inputDate();
+        ordersMenuCount = viewController.inputOrdersMenuCount();
+    }
+
+    private void calculateResult() {
+        orderTotalBeforeDiscount = domainController.getOrderTotalBeforeDiscount(ordersMenuCount);
+        profitPresentPolicy = domainController.getProfitPresentPolicy(day, ordersMenuCount, orderTotalBeforeDiscount);
+        totalProfitPolicy = domainController.getTotalProfitPolicy(profitPresentPolicy);
+        expectedTotalAfterDiscount = domainController.getExpectedTotalAfterDiscount(orderTotalBeforeDiscount, totalProfitPolicy);
+        badgePolicy = domainController.getBadgePolicy(day, totalProfitPolicy);
+    }
+
 
     private void showResult() {
         viewController.output(day);
