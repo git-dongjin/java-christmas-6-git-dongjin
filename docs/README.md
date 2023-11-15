@@ -65,7 +65,82 @@
 * * * * *  
 
 ### 프로그램 상세   
+**christmas**  
+* Application  
+프로그램의 시작점  
+Reader와 Writer 객체를 생성하고 PromotionController에 주입해서 크리스마스 프로모션 프로그램을 실행한다.
+  
+<br/>  
 
+**christmas.domain**  
+unit  
+* Day  
+* Money  
+* Order  
+* Orders  
+* OrdersMenuCount  
+* Presents  
+
+period  
+* ChristmasDiscountPeriod  
+* MenuPresentGivePeriod  
+* SpecialDiscountPeriod  
+* WeekdayDiscountPeriod  
+* WeekendDiscountPeriod  
+
+discount  
+* Discount  
+* Discounts  
+* ChristmasDiscount  
+* SpecialDiscount  
+* WeekdayDiscount  
+* WeekendDiscount  
+
+present  
+* PresentGive  
+* MenuPresentGive  
+
+policy  
+* BadgePolicy  
+* DiscountPresentPolicy  
+* MinimumOrderTotalPolicy  
+* TotalProfitPolicy  
+
+total  
+* ExpectedTotalAfterDiscount  
+* OrderTotalBeforeDiscount  
+  
+<br/>  
+
+**christmas.controller**  
+* PromotionController  
+* DomainController  
+* ViewController  
+  
+<br/>  
+
+**christmas.view**  
+input  
+* Reader, ConsoleReader  
+* InputView  
+
+output  
+* Writer, StdoutWriter  
+* OutputView
+
+<br/>  
+
+**christmas.enums**  
+* Badge  
+* Calander  
+* Menu  
+* MenuCategory  
+* Present  
+  
+<br/>  
+
+**christmas.util**  
+* Parser  
 
 * * * * *  
 
