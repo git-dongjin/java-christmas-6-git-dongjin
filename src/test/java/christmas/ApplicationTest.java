@@ -57,7 +57,8 @@ class ApplicationTest extends NsTest {
             "티본스테이크-10,해산물파스타-10,크리스마스파스타-10",
             "제로콜라-5,레드와인-5",
             "초코케이크-0,크라스마스파스타-3",
-            "양송이수프-4,시저샐러드--3"})
+            "양송이수프-4,시저샐러드--3",
+            "초코케이크-3,티본스테이크-1,초코케이크-4"})
     void 주문_예외_테스트(String order) {
         assertSimpleTest(() -> {
             runException("3", order);
